@@ -14,16 +14,13 @@
  *  limitations under the License.
  */
 
-describe('tests with specific status', () => {
-    test('should be passed', () => {
+const PublicReportingAPI = require('@reportportal/agent-js-jasmine/lib/publicReportingAPI');
+
+describe('description for suite/test', function() {
+    PublicReportingAPI.setDescription('The description for the suite', 'test the description for suites/tests');
+
+    it('should have the correct description', function() {
+        PublicReportingAPI.setDescription('The description for the test');
         expect(true).toBe(true);
-    });
-
-    test('should be failed', () => {
-        expect(true).toEqual(false);
-    });
-
-    test.skip('should be skipped', () => {
-        expect(true).toEqual(true);
     });
 });
