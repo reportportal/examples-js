@@ -1,0 +1,15 @@
+{
+  "license": "Apache-2.0",
+  "scripts": {
+    "protractor": "protractor protractor/simpleConfig.js",
+    "protractor-multiTread": "node protractor-multiTread/protractorLaunchFile.js",
+    "webdriver-update": "webdriver-manager update",
+    "webdriver-start": "webdriver-manager start"
+  },
+  "devDependencies": {
+    "protractor": "^5.1.2",
+    "protractor-flake": "^2.5.0",
+    "@reportportal/client-javascript": "^5.0.0",
+    "@reportportal/agent-js-jasmine": "^5.0.0"
+  }
+}
