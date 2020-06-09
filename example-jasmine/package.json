@@ -1,12 +1,4 @@
 {
-  "name": "@reportportal/agent-js-jasmine-example",
-  "version": "1.0.0",
-  "description": "Example for @reportportal/agent-js-jasmine-example",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/reportportal/examples-js.git"
-  },
-  "author": "ReportPortal.io",
   "license": "Apache-2.0",
   "scripts": {
     "protractor": "protractor protractor/simpleConfig.js",
@@ -17,15 +9,7 @@
   "devDependencies": {
     "protractor": "^5.1.2",
     "protractor-flake": "^2.5.0",
-    "reportportal-client": "^5.0.0",
+    "@reportportal/client-javascript": "^5.0.0",
     "@reportportal/agent-js-jasmine": "^5.0.0"
-  },
-  "homepage": "https://github.com/reportportal/examples-js#readme",
-  "keywords": [
-    "epam",
-    "reportportal",
-    "rp",
-    "jasmine",
-    "example"
-  ]
+  }
 }
