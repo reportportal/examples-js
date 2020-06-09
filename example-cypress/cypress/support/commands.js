@@ -1,1 +1,1 @@
-require('agent-js-cypress/lib/commands/reportPortalCommands');
+require('@reportportal/agent-js-cypress/lib/commands/reportPortalCommands');

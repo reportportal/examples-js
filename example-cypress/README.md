@@ -13,7 +13,7 @@ Specify the following options in the cypress.json:
 ```json
 
 {
-  "reporter": "agent-js-cypress",
+  "reporter": "@reportportal/agent-js-cypress",
   "reporterOptions": {
     "endpoint": "http://your-instance.com:8080/api/v1",
     "token": "00000000-0000-0000-0000-000000000000",
