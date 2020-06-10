@@ -4,3 +4,4 @@ Examples for js integrations with ReportPortal.
 
 * example-jest for [@reportportal/agent-js-jest](https://www.npmjs.com/package/@reportportal/agent-js-jest)
 * example-jasmine for [@reportportal/agent-js-jasmine](https://www.npmjs.com/package/@reportportal/agent-js-jasmine)
+* example-cypress for [@reportportal/agent-js-cypress](https://www.npmjs.com/package/@reportportal/agent-js-cypress)
