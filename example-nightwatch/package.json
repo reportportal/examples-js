@@ -1,0 +1,15 @@
+{
+  "license": "Apache-2.0",
+  "scripts": {
+    "postFactumReporter:unitTests": "nightwatch --config PFR-exampleUnitTests/nightwatch.json --reporter PFR-exampleUnitTests/reporter.js",
+    "postFactumReporter:chromeDriver": "nightwatch --config PFR-exampleChromeDriver/nightwatch.conf.js --reporter PFR-exampleChromeDriver/reporter.js",
+    "realTimeReporter:chromeDriver": "nightwatch --config RTR-exampleChromeDriver/nightwatch.conf.js",
+    "realTimeReporter:chromeDriver:parallelRun": "nightwatch --config RTR-exampleChromeDriverParallelRun/nightwatch.conf.js"
+  },
+  "devDependencies": {
+    "@reportportal/agent-js-nightwatch": "^5.0.0",
+    "chai": "^4.1.2",
+    "chromedriver": "83.0.0",
+    "nightwatch": "1.3.4"
+  }
+}
