@@ -1,4 +1,4 @@
-##Example for [@reportportal/agent-js-jest](https://www.npmjs.com/package/@reportportal/agent-js-jest)
+## Example for [@reportportal/agent-js-jest](https://www.npmjs.com/package/@reportportal/agent-js-jest)
 
 ## Run test example:
 Inside of jest.config.js you need to insert data about your instance of the Report Portal.
