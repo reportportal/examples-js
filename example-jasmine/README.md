@@ -1,4 +1,4 @@
-##Example for [@reportportal/agent-js-jasmine](https://www.npmjs.com/package/@reportportal/agent-js-jasmine)
+## Example for [@reportportal/agent-js-jasmine](https://www.npmjs.com/package/@reportportal/agent-js-jasmine)
 
 ## Run test example:
 To run the example you must have java installed.
