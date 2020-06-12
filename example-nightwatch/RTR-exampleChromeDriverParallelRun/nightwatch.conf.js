@@ -23,7 +23,7 @@ let rpReporter;
 
 module.exports = {
   src_folders: ['./RTR-exampleChromeDriverParallelRun/tests'],
-  custom_commands_path: '@reportportal/agent-js-nightwatch/commands',
+  custom_commands_path: ['./node_modules/@reportportal/agent-js-nightwatch/build/commands'],
   test_workers: true,
 
   test_settings: {

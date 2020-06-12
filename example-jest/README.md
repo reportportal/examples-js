@@ -3,7 +3,7 @@
 ## Run test example:
 Inside of jest.config.js you need to insert data about your instance of the Report Portal.
 
-To run the tests, type the following command in the console:
+To run the tests, type the following commands in the console:
 ```cmd
 npm install
 npm run test

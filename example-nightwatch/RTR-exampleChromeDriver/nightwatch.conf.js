@@ -6,7 +6,7 @@ const rpReporter = new RealTimeReporter({ ...config, launch: 'REAL_TIME_REPORTER
 
 module.exports = {
   src_folders: ['./RTR-exampleChromeDriver/tests'],
-  custom_commands_path: '@reportportal/agent-js-nightwatch/commands',
+  custom_commands_path: ['./node_modules/@reportportal/agent-js-nightwatch/build/commands'],
 
   test_settings: {
     default: {
