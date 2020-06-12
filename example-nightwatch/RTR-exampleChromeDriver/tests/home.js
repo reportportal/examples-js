@@ -1,4 +1,4 @@
-const { ReportingAPI } = require('../../../build');
+const { ReportingAPI } = require('@reportportal/agent-js-nightwatch');
 
 const suiteName = 'Home';
 

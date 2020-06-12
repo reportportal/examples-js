@@ -17,7 +17,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { ReportingAPI, FILE_TYPES } = require('../../../build');
+const { ReportingAPI, FILE_TYPES } = require('@reportportal/agent-js-nightwatch');
 ReportingAPI.init();
 
 const suiteName = 'Search';
