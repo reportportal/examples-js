@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "test": "node main.js"
+  },
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@reportportal/agent-js-mocha": "^5.0.0",
+    "mocha": "^7.0.1",
+    "chai": "^4.2.0"
+  }
+}
