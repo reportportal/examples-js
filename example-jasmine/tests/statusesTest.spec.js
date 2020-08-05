@@ -16,7 +16,7 @@
 
 const PublicReportingAPI = require('@reportportal/agent-js-jasmine/lib/publicReportingAPI');
 
-describe('populated statuses for launch/suite/test', function() {
+describe('tests with populated statuses', function() {
     PublicReportingAPI.setLaunchStatusInfo();
     PublicReportingAPI.setStatusInfo('tests with populated statuses');
 
