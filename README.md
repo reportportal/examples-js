@@ -7,3 +7,4 @@ Examples for js integrations with ReportPortal.
 * example-cypress for [@reportportal/agent-js-cypress](https://www.npmjs.com/package/@reportportal/agent-js-cypress)
 * example-nightwatch for [@reportportal/agent-js-nightwatch](https://www.npmjs.com/package/@reportportal/agent-js-nightwatch)
 * example-mocha for [@reportportal/agent-js-mocha](https://www.npmjs.com/package/@reportportal/agent-js-mocha)
+* example-cucumber for [@reportportal/agent-js-cucumber](https://www.npmjs.com/package/@reportportal/agent-js-cucumber)
