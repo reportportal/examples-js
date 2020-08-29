@@ -1,15 +1,16 @@
 {
   "scripts": {
-    "simpleTest": "cucumber-js features/simpleFeature/ --require=features/simpleFeature/**/*.js",
-    "simpleTestWithRetries": "cucumber-js features/simpleFeature/ --require=features/simpleFeature/**/*.js --retry 2",
-    "seleniumWebdriverTest": "cucumber-js features/webdriverIntegrationFeature/ --require=features/webdriverIntegrationFeature/**/*.js",
-    "allTests": "cucumber-js features/**/*.feature",
-    "attachmentTest": "cucumber-js features/attachments/ --require=features/attachments/**/*.js"
+    "example:simpleTest": "cucumber-js features/simpleFeature/ --require=features/simpleFeature/**/*.js",
+    "example:simpleTestWithRetries": "cucumber-js features/simpleFeature/ --require=features/simpleFeature/**/*.js --retry 2",
+    "example:seleniumWebdriverTest": "cucumber-js features/webdriverIntegrationFeature/ --require=features/webdriverIntegrationFeature/**/*.js",
+    "example:attachmentTest": "cucumber-js features/attachments/ --require=features/attachments/**/*.js"
   },
   "dependencies": {
     "@reportportal/agent-js-cucumber": "^5.0.0",
     "chromedriver": "^83.0.0",
-    "selenium-webdriver": "^3.5.0",
-    "cucumber": "6.0.5"
+    "selenium-webdriver": "^3.5.0"
+  },
+  "peerDependencies": {
+    "cucumber": "4.x - 6.x"
   }
 }

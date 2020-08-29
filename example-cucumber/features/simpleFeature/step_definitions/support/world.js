@@ -1,4 +1,4 @@
 const cucumber = require('cucumber');
-const { Logger } = require('../../../../../modules');
+const { RPWorld } = require('@reportportal/agent-js-cucumber');
 
-cucumber.setWorldConstructor(Logger);
+cucumber.setWorldConstructor(RPWorld);

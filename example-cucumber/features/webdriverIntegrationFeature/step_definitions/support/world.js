@@ -2,7 +2,7 @@ require('chromedriver');
 const cucumber = require('cucumber');
 const { Builder } = require('selenium-webdriver');
 const { Options } = require('selenium-webdriver/chrome');
-const { RPWorld } = require('../../../../../modules');
+const { RPWorld } = require('@reportportal/agent-js-cucumber');
 
 class CustomWorld extends RPWorld {
   constructor(...args) {

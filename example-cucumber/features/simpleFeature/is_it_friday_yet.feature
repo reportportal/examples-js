@@ -1,8 +1,8 @@
-@SuiteK:suiteV @suiteV2
+@feature:friday @when
 Feature: Is it Friday yet?
   Everybody wants to know when it's Friday
 
-  @testV
+  @scenario:checkToday
   Scenario Outline: Today is or is not Friday
     Description of scenario
 
