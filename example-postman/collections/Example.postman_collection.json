@@ -1,0 +1,167 @@
+{
+	"info": {
+		"_postman_id": "03bbd020-3204-4029-9b39-cda52734d51e",
+		"name": "Suite",
+		"description": "Description for the suite",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Test One",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Test, status code is 200\", function () {\r",
+							"    pm.variables.set(\"rp.testCaseId\", \"testCaseIdForTestOneStepOne\");\r",
+							"    pm.variables.set(\"rp.status\", \"skipped\");\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Test, status code is 400\", function () {\r",
+							"    pm.variables.set(\"rp.testCaseId\", \"testCaseIdForTestOneStepTwo\");\r",
+							"    pm.variables.set(\"rp.status\", \"failed\");\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"console.log('test', 'LOG');\r",
+							"console.info('test', 'INFO log');\r",
+							"console.debug('test', 'DEBUG log');\r",
+							"console.error('test', 'ERROR log');\r",
+							"console.warn('test', 'WARN log');\r",
+							"pm.environment.set(\"rp.testCaseId\", \"TestOneTestCaseId\");\r",
+							"pm.environment.set(\"rp.status\", \"skipped\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://learn.javascript.ru?attr=1234",
+					"protocol": "https",
+					"host": [
+						"learn",
+						"javascript",
+						"ru"
+					],
+					"query": [
+						{
+							"key": "attr",
+							"value": "1234"
+						},
+						{
+							"key": "collection_tries",
+							"value": "2",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Description for test one"
+			},
+			"response": []
+		},
+		{
+			"name": "Test Two",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"rp.attributes\", \"testTwoKey:testTwoValue;testTwoValue2\");\r",
+							"pm.environment.set(\"rp.testCaseId\", \"TestTwoTestCaseId\");\r",
+							"pm.environment.set(\"rp.status\", \"skipped\");\r",
+							"console.log('test', 'Request two LOG');\r",
+							"console.info('test', 'Request two INFO log');\r",
+							"console.debug('test', 'Request two DEBUG log');\r",
+							"console.error('test', 'Request two ERROR log');\r",
+							"console.warn('test', 'Request two WARN log');"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Test, status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://ghgvhgvhgvhpostman-echo.com",
+					"protocol": "https",
+					"host": [
+						"ghgvhgvhgvhpostman-echo",
+						"com"
+					]
+				},
+				"description": "Description for test two"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"console.log('suite', 'LOG');",
+					"console.error('suite', 'ERROR LOG');",
+					"console.debug('suite', 'DEBUG LOG');",
+					"console.warn('suite', 'WARN LOG');",
+					"console.info('suite', 'INFO LOG');",
+					"console.log('launch', 'LOG');",
+					"console.error('launch', 'ERROR LOG');",
+					"console.debug('launch', 'DEBUG LOG');",
+					"console.warn('launch', 'WARN LOG');",
+					"console.info('launch', 'INFO LOG');"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "rp.attributes",
+			"value": "attrKey:attrValue"
+		},
+		{
+			"key": "rp.testCaseId",
+			"value": "SuiteTestCaseId"
+		},
+		{
+			"key": "rp.launchStatus",
+			"value": "skipped"
+		},
+		{
+			"key": "rp.status",
+			"value": "skipped"
+		}
+	]
+}
