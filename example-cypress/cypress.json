@@ -1,19 +1,37 @@
 {
-  "reporter": "@reportportal/agent-js-cypress",
+  "headless": true,
+  "reporter": "cypress-multi-reporters",
   "reporterOptions": {
-    "endpoint": "http://your-instance.com:8080/api/v1",
-    "token": "00000000-0000-0000-0000-000000000000",
-    "launch": "LAUNCH_NAME",
-    "project": "PROJECT_NAME",
-    "description": "PROJECT_DESCRIPTION",
-    "attributes": [
-      {
-        "key": "attributeKey",
-        "value": "attrbiuteValue"
-      },
-      {
-        "value": "secondAttrbiuteValue"
-      }
-    ]
+    "reporterEnabled": ["@reportportal/agent-js-cypress", "mochawesome"],
+    "mochawesomeReporterOptions": {
+      "reportDir": "cypress/reports/mocha",
+      "quite": true,
+      "overwrite": false,
+      "html": false,
+      "json": true
+    },
+    "reportportalAgentJsCypressReporterOptions": {
+      "endpoint": "http://your-instance.com:8080/api/v1",
+      "token": "00000000-0000-0000-0000-000000000000",
+      "launch": "LAUNCH_NAME",
+      "project": "PROJECT_NAME",
+      "description": "PROJECT_DESCRIPTION",
+      "reportHooks": true,
+      "autoMerge": true,
+      "attributes": [
+        {
+          "key": "attributeKey",
+          "value": "attrbiuteValue"
+        },
+        {
+          "value": "secondAttrbiuteValue"
+        }
+      ],
+      "integrationFolder": "cypress/integration",
+      "screenshotsFolder": "cypress/screenshots",
+      "fixturesFolder": "cypress/fixtures",
+      "supportFile": "cypress/support/index.js",
+      "pluginsFile": "cypress/plugins/index.js"
+    }
   }
 }

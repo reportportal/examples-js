@@ -14,8 +14,36 @@
  *  limitations under the License.
  */
 
- context('logs for tests and launch', () => {
-  it('should have logs', () => {
+context('Logs for tests and launch', () => {
+  beforeEach('Visit Cypress page', () => {
+    return cy.visit('https://example.cypress.io', { timeout: 10000 });
+  });
+  it('should send logs to the launch', () => {
+    cy.setTestDescription('This test sends logs with different levels to the launch');
+    cy.addTestAttributes([
+      {
+        key: 'feature',
+        value: 'launchLogs',
+      },
+    ]);
+    cy.launchTrace('trace launch log');
+    cy.launchDebug('debug launch log');
+    cy.launchInfo('info launch log');
+    cy.launchWarn('warn launch log');
+    cy.launchError('error launch log');
+    cy.launchFatal('fatal launch log');
+
+    cy.contains('Cypress');
+  });
+
+  it('should send logs to the test item', () => {
+    cy.setTestDescription('This test sends logs with different levels to the test item');
+    cy.addTestAttributes([
+      {
+        key: 'feature',
+        value: 'testItemLogs',
+      },
+    ]);
     cy.log('cypress log message');
     cy.trace('trace message');
     cy.debug('debug message');
@@ -24,13 +52,6 @@
     cy.error('error message');
     cy.fatal('fatal message');
 
-    cy.launchTrace('trace launch log');
-    cy.launchDebug('debug launch log');
-    cy.launchInfo('info launch log');
-    cy.launchWarn('warn launch log');
-    cy.launchError('error launch log');
-    cy.launchFatal('fatal launch log');
-    
     cy.fixture('test.png').then((file) => {
       cy.info('info log with attachment', {
         name: 'test.png',
@@ -38,5 +59,20 @@
         content: file,
       });
     });
+
+    cy.contains('Cypress');
+  });
+
+  it('should contain the description', () => {
+    cy.setTestDescription('Test description');
+    cy.setTestDescription('This description overwrites previous');
+    cy.addTestAttributes([
+      {
+        key: 'feature',
+        value: 'overwriteDescription',
+      },
+    ]);
+
+    cy.contains('Cypress');
   });
 });
