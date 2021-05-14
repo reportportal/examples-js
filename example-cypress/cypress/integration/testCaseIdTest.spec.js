@@ -23,6 +23,7 @@ context('Awesome suite', () => {
         cy.setTestDescription('This test case contains explicit test case id');
 
         cy.contains('Cypress');
+        cy.info('Use timeout 1000ms');
         cy.wait(1000);
         cy.addTestAttributes([
             {

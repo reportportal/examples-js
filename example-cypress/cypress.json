@@ -20,11 +20,11 @@
       "autoMerge": true,
       "attributes": [
         {
-          "key": "agent",
-          "value": "cypress"
+          "key": "attributeKey",
+          "value": "attrbiuteValue"
         },
         {
-          "value": "example"
+          "value": "secondAttrbiuteValue"
         }
       ],
       "integrationFolder": "cypress/integration",

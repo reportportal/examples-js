@@ -15,6 +15,9 @@
  */
 
 context('Logs for tests and launch', () => {
+  beforeEach('Visit Cypress page', () => {
+    return cy.visit('https://example.cypress.io', { timeout: 10000 });
+  });
   it('should send logs to the launch', () => {
     cy.setTestDescription('This test sends logs with different levels to the launch');
     cy.addTestAttributes([
@@ -29,6 +32,8 @@ context('Logs for tests and launch', () => {
     cy.launchWarn('warn launch log');
     cy.launchError('error launch log');
     cy.launchFatal('fatal launch log');
+
+    cy.contains('Cypress');
   });
 
   it('should send logs to the test item', () => {
@@ -54,23 +59,20 @@ context('Logs for tests and launch', () => {
         content: file,
       });
     });
+
+    cy.contains('Cypress');
   });
 
-  it('Check that cypress page contains `Cypress` word', () => {
-    cy.info('Сypress example page: https://example.cypress.io');
-    cy.setTestDescription('This test case checks the *Cypress* word on the cypress example page.');
+  it('should contain the description', () => {
+    cy.setTestDescription('Test description');
+    cy.setTestDescription('This description overwrites previous');
     cy.addTestAttributes([
       {
-        key: 'page',
-        value: 'cypress',
+        key: 'feature',
+        value: 'overwriteDescription',
       },
     ]);
-    cy.wait(500);
-    cy.info('Check if the `Cypress` word presented on the page #1');
+
     cy.contains('Cypress');
-    cy.info('Check if the `Cypress` word presented on the page #2');
-    cy.wait(500);
-    cy.contains('Cypress');
-    cy.info('Some checks performed!');
   });
 });
