@@ -14,22 +14,62 @@
  *  limitations under the License.
  */
 
- context('attributes for test', () => {
-  beforeEach('Visit Cypress page', () => {
-    return cy.visit('https://example.cypress.io', { timeout: 10000 });
-  });
-  it('should contain attributes', () => {
-    cy.addTestAttributes([
-      {
-        key: 'checkCypress',
-        value: 'success',
-      },
-    ]);
-    cy.addTestAttributes([
-      {
-        value: 'important',
-      },
-    ]);
-    cy.contains('Cypress');
-  });
+context('Cypress example page verification', () => {
+    beforeEach('Visit Cypress page', () => {
+        return cy.visit('https://example.cypress.io', { timeout: 10000 });
+    });
+
+    it('Check that cypress page contains `Cypress` word', () => {
+        cy.info('Сypress example page: https://example.cypress.io');
+        cy.setTestDescription('This test case checks the *Cypress* word on the cypress example page.');
+        cy.addTestAttributes([
+            {
+                key: 'page',
+                value: 'cypress',
+            },
+        ]);
+        cy.wait(500);
+        cy.info('Check if the `Cypress` word presented on the page #1');
+        cy.contains('Cypress');
+        cy.info('Check if the `Cypress` word presented on the page #2');
+        cy.wait(500);
+        cy.contains('Cypress');
+        cy.info('Some checks performed!');
+    });
+
+    it('Check that cypress page contains `Cypress123` word', () => {
+        cy.info('Сypress example page: https://example.cypress.io');
+        cy.info('Add attributes to the test using `addTestAttributes` command');
+        cy.setTestDescription('This test case checks the `Cypress123` word on the cypress example page, but it fails.');
+        cy.wait(500);
+        cy.info('Add attributes to the test using `addTestAttributes` command');
+        cy.addTestAttributes([
+            {
+                key: 'check',
+                value: 'shouldFail',
+            },
+        ]);
+        cy.warn('This test checks `Cypress123` word!');
+        cy.wait(500);
+        cy.info('Check if the `Cypress123` word presented on the page');
+        cy.contains('Cypress123');
+    });
+
+    it('Check that cypress page contains `Abrakadabra` word', () => {
+        cy.setTestDescription('This test case checks the `Abrakadabra` word on the cypress example page, but it fails.');
+        cy.info('Visit cypress example page: https://example.cypress.io');
+        cy.wait(500);
+        cy.info('Add attributes to the test using `addTestAttributes` command');
+        cy.addTestAttributes([
+            {
+                key: 'check',
+                value: 'shouldFail',
+            },
+        ]);
+
+        cy.warn('This test fails!');
+        cy.wait(500);
+        cy.info('Check if the `Abrakadabra` word presented on the page');
+        cy.contains('Cypress123');
+    });
 });

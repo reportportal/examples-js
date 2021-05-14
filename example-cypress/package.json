@@ -4,7 +4,9 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@reportportal/agent-js-cypress": "^5.0.0",
-    "cypress": "^4.8.0"
+    "@reportportal/agent-js-cypress": "^5.0.1",
+    "cypress": "7.2.0",
+    "cypress-multi-reporters": "^1.5.0",
+    "mochawesome": "6.2.2"
   }
 }

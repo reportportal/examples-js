@@ -19,7 +19,6 @@
     return cy.visit('https://example.cypress.io', { timeout: 10000 });
   });
   it('should have status failed', () => {
-    cy.setLaunchStatusInfo();
     cy.setStatusFailed();
     cy.contains('Cypress');
   });

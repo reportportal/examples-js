@@ -14,8 +14,31 @@
  *  limitations under the License.
  */
 
- context('logs for tests and launch', () => {
-  it('should have logs', () => {
+context('Logs for tests and launch', () => {
+  it('should send logs to the launch', () => {
+    cy.setTestDescription('This test sends logs with different levels to the launch');
+    cy.addTestAttributes([
+      {
+        key: 'feature',
+        value: 'launchLogs',
+      },
+    ]);
+    cy.launchTrace('trace launch log');
+    cy.launchDebug('debug launch log');
+    cy.launchInfo('info launch log');
+    cy.launchWarn('warn launch log');
+    cy.launchError('error launch log');
+    cy.launchFatal('fatal launch log');
+  });
+
+  it('should send logs to the test item', () => {
+    cy.setTestDescription('This test sends logs with different levels to the test item');
+    cy.addTestAttributes([
+      {
+        key: 'feature',
+        value: 'testItemLogs',
+      },
+    ]);
     cy.log('cypress log message');
     cy.trace('trace message');
     cy.debug('debug message');
@@ -24,13 +47,6 @@
     cy.error('error message');
     cy.fatal('fatal message');
 
-    cy.launchTrace('trace launch log');
-    cy.launchDebug('debug launch log');
-    cy.launchInfo('info launch log');
-    cy.launchWarn('warn launch log');
-    cy.launchError('error launch log');
-    cy.launchFatal('fatal launch log');
-    
     cy.fixture('test.png').then((file) => {
       cy.info('info log with attachment', {
         name: 'test.png',
@@ -38,5 +54,23 @@
         content: file,
       });
     });
+  });
+
+  it('Check that cypress page contains `Cypress` word', () => {
+    cy.info('Сypress example page: https://example.cypress.io');
+    cy.setTestDescription('This test case checks the *Cypress* word on the cypress example page.');
+    cy.addTestAttributes([
+      {
+        key: 'page',
+        value: 'cypress',
+      },
+    ]);
+    cy.wait(500);
+    cy.info('Check if the `Cypress` word presented on the page #1');
+    cy.contains('Cypress');
+    cy.info('Check if the `Cypress` word presented on the page #2');
+    cy.wait(500);
+    cy.contains('Cypress');
+    cy.info('Some checks performed!');
   });
 });
