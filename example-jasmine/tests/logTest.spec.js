@@ -14,11 +14,9 @@
  *  limitations under the License.
  */
 
-const expect = require('chai').expect;
+const PublicReportingAPI = require('@reportportal/agent-js-jasmine/lib/publicReportingAPI');
 const fs = require('fs');
 const path = require('path');
-const PublicReportingAPI = require('@reportportal/agent-js-mocha/lib/publicReportingAPI');
-
 const attachments = [
   {
     filename: 'test.jpg',
@@ -47,15 +45,7 @@ const attachments = [
 ];
 
 describe('Logs for launch/suite/test', function () {
-  before(function () {
-    PublicReportingAPI.debug('debug suite log');
-    PublicReportingAPI.trace('trace suite log');
-    PublicReportingAPI.warn('warn suite log');
-    PublicReportingAPI.error('error suite log');
-    PublicReportingAPI.fatal('fatal suite log');
-    PublicReportingAPI.info('info suite log');
-  });
-  it('should send logs to the launch', async function () {
+  it('should send logs to the launch', function () {
     PublicReportingAPI.setDescription('This test sends logs with different levels to the launch');
     PublicReportingAPI.addAttributes([
       {
@@ -63,13 +53,19 @@ describe('Logs for launch/suite/test', function () {
         value: 'launchLogs',
       },
     ]);
-    PublicReportingAPI.launchLog('INFO', 'launch log with manually specified info level');
+    PublicReportingAPI.launchLog('INFO', 'info launch log, logs for launch/suite/test');
     PublicReportingAPI.launchInfo('info launch log');
     PublicReportingAPI.launchDebug('debug launch log');
     PublicReportingAPI.launchTrace('trace launch log');
     PublicReportingAPI.launchWarn('warn launch log');
     PublicReportingAPI.launchError('error launch log');
     PublicReportingAPI.launchFatal('fatal launch log');
+    PublicReportingAPI.debug('debug message, testGithubPage', null, 'logs for launch/suite/test');
+    PublicReportingAPI.info('info message, testGithubPage', null, 'logs for launch/suite/test');
+    PublicReportingAPI.trace('trace message, testGithubPage', null, 'logs for launch/suite/test');
+    PublicReportingAPI.warn('warning message, testGithubPage', null, 'logs for launch/suite/test');
+    PublicReportingAPI.error('error message, testGithubPage', null, 'logs for launch/suite/test');
+    PublicReportingAPI.fatal('fatal message, testGithubPage', null, 'logs for launch/suite/test');
   });
   it('should send logs to the test item', function () {
     PublicReportingAPI.setDescription(
@@ -83,11 +79,10 @@ describe('Logs for launch/suite/test', function () {
     ]);
     PublicReportingAPI.debug('debug message');
     PublicReportingAPI.trace('trace message');
-    PublicReportingAPI.warn('warning  message');
-    PublicReportingAPI.error('error  message');
-    PublicReportingAPI.fatal('fatal  message');
-    PublicReportingAPI.info('info  message');
-    expect(true).to.be.equal(true);
+    PublicReportingAPI.warn('warning message');
+    PublicReportingAPI.error('error message');
+    PublicReportingAPI.fatal('fatal message');
+    expect(true).toBe(true);
   });
   it('should contain logs with attachments', async function () {
     PublicReportingAPI.setDescription('This test contains logs with attachments');
@@ -97,7 +92,7 @@ describe('Logs for launch/suite/test', function () {
         value: 'logsWithAttachments',
       },
     ]);
-    expect(true).to.be.equal(true);
+    expect(true).toEqual(true);
     const readFilesPromises = attachments.map(
       ({ filename, type }) =>
         new Promise((resolve) =>

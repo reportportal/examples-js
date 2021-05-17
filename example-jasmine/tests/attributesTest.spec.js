@@ -16,21 +16,43 @@
 
 const PublicReportingAPI = require('@reportportal/agent-js-jasmine/lib/publicReportingAPI');
 
-describe('attributes for suite/test', function() {
-    PublicReportingAPI.addAttributes([{
+describe('attributes for suite/test', function () {
+  PublicReportingAPI.setDescription(
+    'This suite should have the correct suite attributes',
+    'attributes for suite/test',
+  );
+  PublicReportingAPI.addAttributes(
+    [
+      {
         key: 'suiteKeyOne',
         value: 'suiteValueOne',
-    }], 'test the attributes for suites/tests');
-    PublicReportingAPI.addAttributes([{
+      },
+    ],
+    'attributes for suite/test',
+  );
+  PublicReportingAPI.addAttributes(
+    [
+      {
         key: 'suiteKeyTwo',
         value: 'suiteValueTwo',
-    }], 'test the attributes for suites/tests');
-
-    it('should have the correct attributes', function() {
-        PublicReportingAPI.addAttributes([{
-            key: 'testKey',
-            value: 'testValue'
-        }]);
-        expect(true).toBe(true);
-    });
+      },
+      {
+        value: 'suiteValueThree',
+      },
+    ],
+    'attributes for suite/test',
+  );
+  it('should have the correct test attributes', function () {
+    PublicReportingAPI.setDescription('This test should have the correct test attributes');
+    PublicReportingAPI.addAttributes([
+      {
+        key: 'testKey',
+        value: 'testValue',
+      },
+      {
+        value: 'testValueTwo',
+      },
+    ]);
+    expect(true).toBe(true);
+  });
 });

@@ -17,29 +17,37 @@
 const expect = require('chai').expect;
 const PublicReportingAPI = require('@reportportal/agent-js-mocha/lib/publicReportingAPI');
 
-describe('attributes for suite/test', function() {
-  before(function() {
-    PublicReportingAPI.addAttributes([{
-      key: 'suiteKeyOne',
-      value: 'suiteValueOne',
-    }]);
-    PublicReportingAPI.addAttributes([{
+describe('attributes for suite/test', function () {
+  before(function () {
+    PublicReportingAPI.setDescription('This suite should have the correct suite attributes');
+    PublicReportingAPI.addAttributes([
+      {
+        key: 'suiteKeyOne',
+        value: 'suiteValueOne',
+      },
+    ]);
+    PublicReportingAPI.addAttributes([
+      {
         key: 'suiteKeyTwo',
         value: 'suiteValueTwo',
-    },
-    {
-      value: 'suiteValueThree',
-    }]);
+      },
+      {
+        value: 'suiteValueThree',
+      },
+    ]);
   });
 
-  it('should have the correct attributes', function() {
-    PublicReportingAPI.addAttributes([{
+  it('should have the correct test attributes', function () {
+    PublicReportingAPI.setDescription('This test should have the correct test attributes');
+    PublicReportingAPI.addAttributes([
+      {
         key: 'testKey',
-        value: 'testValue'
-    },
-    {
-      value: 'testValueTwo',
-    }]);
+        value: 'testValue',
+      },
+      {
+        value: 'testValueTwo',
+      },
+    ]);
     expect(true).to.be.equal(true);
   });
 });

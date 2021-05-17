@@ -20,13 +20,22 @@ const Mocha = require('mocha');
 const mochaMain = new Mocha({
   reporter: '@reportportal/agent-js-mocha',
   reporterOptions: {
-    endpoint: 'http://your-instance.com:8080/api/v2',
+    endpoint: 'http://your-instance.com:8080/api/v1',
     token: '00000000-0000-0000-0000-000000000000',
     launch: 'LAUNCH_NAME',
     project: 'PROJECT_NAME',
-    description: 'LAUNCH_DESCRIPTION'
+    description: 'PROJECT_DESCRIPTION',
+    attributes: [
+      {
+        key: 'attributeKey',
+        value: 'attrbuteValue',
+      },
+      {
+        value: 'secondAttrbuteValue',
+      },
+    ],
   },
-  timeout: 250000
+  timeout: 250000,
 });
 
 // run tests
@@ -36,7 +45,7 @@ try {
     'spec/descriptionsTest.spec.js',
     'spec/logTest.spec.js',
     'spec/statusesTest.spec.js',
-    'spec/testCaseIdTest.spec.js'
+    'spec/testCaseIdTest.spec.js',
   ];
   mochaMain.run((failures) => process.on('exit', () => process.exit(failures))); // exit with non-zero exit code, other wise fails will not fail mocha run
 } catch (err) {
