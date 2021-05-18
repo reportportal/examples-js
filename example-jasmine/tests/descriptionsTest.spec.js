@@ -16,11 +16,11 @@
 
 const PublicReportingAPI = require('@reportportal/agent-js-jasmine/lib/publicReportingAPI');
 
-describe('description for suite/test', function() {
-    PublicReportingAPI.setDescription('The description for the suite', 'test the description for suites/tests');
+describe('description for suite/test', function () {
+  PublicReportingAPI.setDescription('The description for the suite', 'description for suite/test');
 
-    it('should have the correct description', function() {
-        PublicReportingAPI.setDescription('The description for the test');
-        expect(true).toBe(true);
-    });
+  it('should have the correct description', function () {
+    PublicReportingAPI.setDescription('The description for the test');
+    expect(true).toBe(true);
+  });
 });

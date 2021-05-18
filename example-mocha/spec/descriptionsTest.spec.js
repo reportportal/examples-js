@@ -17,13 +17,13 @@
 const expect = require('chai').expect;
 const PublicReportingAPI = require('@reportportal/agent-js-mocha/lib/publicReportingAPI');
 
-describe('description for suite/test', function() {
-    before(function() {
-        PublicReportingAPI.setDescription('The description for the suite');
-      });
+describe('description for suite/test', function () {
+  before(function () {
+    PublicReportingAPI.setDescription('The description for the suite');
+  });
 
-    it('should have the correct description', function() {
-        PublicReportingAPI.setDescription('The description for the test');
-        expect(true).to.be.equal(true);
-    });
+  it('should have the correct description', function () {
+    PublicReportingAPI.setDescription('The description for the test');
+    expect(true).to.be.equal(true);
+  });
 });
