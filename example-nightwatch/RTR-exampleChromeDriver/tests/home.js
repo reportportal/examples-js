@@ -1,14 +1,33 @@
-const { ReportingAPI } = require('@reportportal/agent-js-nightwatch');
+/*
+ *  Copyright 2021 EPAM Systems
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ */
+
+const {ReportingAPI} = require('@reportportal/agent-js-nightwatch');
 
 const suiteName = 'Home';
 
-describe(suiteName, function() {
+describe(suiteName, function () {
 
   this.retries(3);
 
   before(() => {
     ReportingAPI.startBeforeSuite();
     // beforeSuite related actions
+    ReportingAPI.addDescription('This is **before suite hook**');
+    ReportingAPI.addAttributes([{key: 'suite', value: 'home.js'}]);
     ReportingAPI.finishBeforeSuite();
 
     const item = {
@@ -17,6 +36,7 @@ describe(suiteName, function() {
       description: 'Suite description',
     };
     ReportingAPI.startSuite(item);
+    ReportingAPI.addDescription('`Suite` contain `tests` with retries')
   });
 
   after((browser, done) => {
