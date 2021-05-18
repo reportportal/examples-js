@@ -1,3 +1,20 @@
+/*
+ *  Copyright 2021 EPAM Systems
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ */
+
 const fs = require('fs');
 const path = require('path');
 const { ReportingAPI, FILE_TYPES } = require('@reportportal/agent-js-nightwatch');
@@ -23,6 +40,7 @@ module.exports = {
 
     ReportingAPI.startAfterTestCase(suiteName);
     // afterEach related actions
+    ReportingAPI.addDescription('This is **after step hook**');
     ReportingAPI.finishAfterTestCase();
   },
 
@@ -39,7 +57,6 @@ module.exports = {
       .waitForElementPresent('foo', 1000);
 
     ReportingAPI.logInfo('Info log for demo test item');
-    ReportingAPI.launchLogDebug('Debug log for launch');
     ReportingAPI.addDescription('Demo test for google.com');
     ReportingAPI.setTestCaseId('itemTestCaseId');
   },
@@ -58,7 +75,6 @@ module.exports = {
       content: fs.readFileSync(path.resolve(__dirname, '../data', 'cities.json')),
     };
 
-    ReportingAPI.launchLogInfo('Log with attachment for launch', attachment);
     ReportingAPI.setStatusPassed();
   }
 };
