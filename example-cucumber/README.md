@@ -15,6 +15,6 @@ npm install
 Then run npm tasks with `example:` prefix. For example, `example:simple`.
 
 ---
-> Pay attention: you may change reporting behavior to report steps to the log level.
-> You need to pass an additional parameter to the agent config: "scenarioBasedStatistics": true
+> Pay attention: you may change reporting behavior to report steps to the log level.\
+> You need to pass an additional parameter to the agent config: "scenarioBasedStatistics": true\
 > For more information check the link: [Step reporting configuration](https://github.com/reportportal/agent-js-cucumber#step-reporting-configuration)
