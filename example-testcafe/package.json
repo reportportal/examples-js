@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "test:viaAPI": "node testcafe.js",
+    "test:viaConfig": "testcafe"
+  },
+  "devDependencies": {
+    "testcafe": "1.15.1",
+    "testcafe-reporter-agent-js-testcafe": "npm:@reportportal/testcafe-reporter-agent-js-testcafe@^5.0.0"
+  }
+}

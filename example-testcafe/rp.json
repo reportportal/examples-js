@@ -1,0 +1,16 @@
+{
+  "token": "00000000-0000-0000-0000-000000000000",
+  "endpoint": "https://your.reportportal.server/api/v1",
+  "project": "YourReportPortalProjectName",
+  "launch": "YourLauncherName",
+  "attributes": [
+    {
+      "key": "YourKey",
+      "value": "YourValue"
+    },
+    {
+      "value": "YourValue"
+    }
+  ],
+  "description": "Your launch description"
+}
