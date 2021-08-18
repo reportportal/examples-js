@@ -8,10 +8,9 @@ Install the packages:
 npm install
 ```
 
-Specify the following options in the rp.json:
+Specify the following [options](https://github.com/reportportal/agent-js-testcafe#configuration) in the rp.json:
 
 ```json
-
 {
   "token": "00000000-0000-0000-0000-000000000000",
   "endpoint": "https://your.reportportal.server/api/v1",
@@ -26,18 +25,16 @@ Specify the following options in the rp.json:
       "value": "YourValue"
     }
   ],
-  "description": "Your launch description",
+  "description": "Your launch description"
 }
-
-
 ```
 
-To run the tests via API testcafe, use the following command:
+To run the tests via TestCafe API, use the following command:
 ```cmd
 npm run test:viaAPI
 ```
 
-To run the tests via config, use the following command:
+To run the tests via TestCafe CLI, use the following command:
 ```cmd
-npm run test:viaConfig
+npm run test:viaCLI
 ```

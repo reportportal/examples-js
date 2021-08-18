@@ -1,7 +1,7 @@
 {
   "scripts": {
     "test:viaAPI": "node testcafe.js",
-    "test:viaConfig": "testcafe"
+    "test:viaCLI": "testcafe"
   },
   "devDependencies": {
     "testcafe": "1.15.1",
