@@ -8,3 +8,4 @@ Examples for js integrations with ReportPortal.
 * example-nightwatch for [@reportportal/agent-js-nightwatch](https://www.npmjs.com/package/@reportportal/agent-js-nightwatch)
 * example-mocha for [@reportportal/agent-js-mocha](https://www.npmjs.com/package/@reportportal/agent-js-mocha)
 * example-cucumber for [@reportportal/agent-js-cucumber](https://www.npmjs.com/package/@reportportal/agent-js-cucumber)
+* example-testcafe for [@reportportal/agent-js-testcafe](https://www.npmjs.com/package/@reportportal/testcafe-reporter-agent-js-testcafe)
