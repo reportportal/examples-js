@@ -62,6 +62,10 @@ describe('Logs attaching. Launch, suite and tests with different logs', () => {
   );
 
   it('test with message logs', () => {
+    ReportingApi.addAttributes([{
+      key: 'feature',
+      value: 'logs',
+    }]);
     // launch logs
     ReportingApi.launchTrace('TRACE message log');
     ReportingApi.launchDebug('DEBUG message log');
@@ -81,6 +85,10 @@ describe('Logs attaching. Launch, suite and tests with different logs', () => {
   });
 
   it('test with attachments', async () => {
+    ReportingApi.addAttributes([{
+      key: 'feature',
+      value: 'logs with attachments',
+    }]);
     const readFilesPromises = attachments.map(
       ({ filename, type }) =>
         new Promise((resolve) =>
@@ -100,6 +108,6 @@ describe('Logs attaching. Launch, suite and tests with different logs', () => {
     );
     await Promise.all(readFilesPromises);
 
-    expect(true).toBe(true);
+    expect(true).toBe(false);
   });
 });

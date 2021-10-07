@@ -3,11 +3,11 @@
     "test": "wdio"
   },
   "devDependencies": {
-    "@reportportal/agent-js-webdriverio": "^5.0.0",
+    "@reportportal/agent-js-webdriverio": "^5.0.1",
     "@wdio/cli": "^7.13.2",
     "@wdio/jasmine-framework": "^7.13.2",
     "@wdio/local-runner": "^7.13.2",
-    "chromedriver": "^94.0.0",
+    "chromedriver": "*",
     "wdio-chromedriver-service": "^7.2.2"
   }
 }
