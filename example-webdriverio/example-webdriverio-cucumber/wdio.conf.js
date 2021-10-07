@@ -1,6 +1,6 @@
 const { Reporter } = require('@reportportal/agent-js-webdriverio');
 
-const config = {
+const rpConfig = {
   token: '00000000-0000-0000-0000-00000000000',
   endpoint: 'http://your.reportportal.server:8080/api/v1',
   project: 'YourReportPortalProjectName',
@@ -137,7 +137,7 @@ exports.config = {
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter.html
-  reporters: [[Reporter, config]],
+  reporters: [[Reporter, rpConfig]],
 
   //
   // Options to be passed to Cucumber.

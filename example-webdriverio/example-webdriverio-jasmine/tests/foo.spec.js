@@ -1,7 +1,11 @@
 const {ReportingApi}  = require('@reportportal/agent-js-webdriverio');
 
 describe('Suite', () => {
-  it('Test should be PASSED', async () => {
+  it('Test should be STOPPED instead of PASSED', async () => {
+    ReportingApi.addAttributes([{
+      key: 'feature',
+      value: 'explicitStatus',
+    }]);
     ReportingApi.setStatusStopped();
     await browser.url('https://webdriver.io');
     const title = await browser.getTitle();

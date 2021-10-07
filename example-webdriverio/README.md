@@ -15,7 +15,7 @@ Configure `wdio.conf.js` file:
 ```js
 const { Reporter } = require('@reportportal/agent-js-webdriverio');
 
-const config = {
+const rpConfig = {
   reportPortalClientConfig: {
     token: '00000000-0000-0000-0000-00000000000',
     endpoint: 'http://your-instance:8080/api/v1',
@@ -30,7 +30,7 @@ const config = {
 
 exports.config = {
   // ...
-  services: [[Reporter, config]],
+  services: [[Reporter, rpConfig]],
   framework: 'jasmine' // chosen framework
   // ...
 };
