@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "test": "npx playwright test --config=playwright.config.js"
+  },
+  "devDependencies": {
+    "@reportportal/agent-js-playwright": "^5.0.0",
+    "@playwright/test": "^1.17.1"
+  }
+}
