@@ -1,5 +1,5 @@
 const { test, expect } = require('@playwright/test');
-const { ReportingApi } = require('@reportportal/agent-js-playwright/reportingApi');
+const { ReportingApi } = require('@reportportal/agent-js-playwright');
 const fs = require('fs');
 const path = require('path');
 
@@ -30,7 +30,9 @@ const attachments = [
   },
 ];
 
-test.describe('launch, suite and test should contain logs', () => {
+const suiteName = 'launch, suite and test should contain logs';
+
+test.describe(suiteName, () => {
   ReportingApi.launchLog('INFO', 'launch log with manually specified info level');
   ReportingApi.launchInfo('info launch log');
   ReportingApi.launchDebug('debug launch log');
@@ -39,20 +41,18 @@ test.describe('launch, suite and test should contain logs', () => {
   ReportingApi.launchError('error launch log');
   ReportingApi.launchFatal('fatal launch log');
 
-  ReportingApi.info('INFO log for suite', undefined, 'launch, suite and test should contain logs');
-  ReportingApi.debug( 'DEBUG log for suite', undefined, 'launch, suite and test should contain logs');
-  ReportingApi.trace('TRACE log for suite', undefined, 'launch, suite and test should contain logs');
-  ReportingApi.warn('WARN log for suite', undefined, 'launch, suite and test should contain logs');
-  ReportingApi.error( 'ERROR log for suite', undefined, 'launch, suite and test should contain logs');
-  ReportingApi.fatal( 'FATAL log for suite', undefined, 'launch, suite and test should contain logs');
+  ReportingApi.info('INFO log for suite', undefined, suiteName);
+  ReportingApi.debug( 'DEBUG log for suite', undefined, suiteName);
+  ReportingApi.trace('TRACE log for suite', undefined, suiteName);
+  ReportingApi.warn('WARN log for suite', undefined, suiteName);
+  ReportingApi.error( 'ERROR log for suite', undefined, suiteName);
+  ReportingApi.fatal( 'FATAL log for suite', undefined, suiteName);
 
   ReportingApi.addAttributes([
     {
       key: 'feature',
       value: 'customLogs',
     },
-  ], 'launch, suite and test should contain logs');
-  ReportingApi.addAttributes([
     {
       key: 'browser',
       value: 'chrome',
@@ -60,12 +60,28 @@ test.describe('launch, suite and test should contain logs', () => {
     {
       value: 'demo',
     },
-  ], 'launch, suite and test should contain logs');
+  ], suiteName);
 
-  ReportingApi.setDescription('This suite contains tests to demonstrate custom logs reporting via agent-js-playwright', 'launch, suite and test should contain logs')
+  ReportingApi.setDescription(
+    'This suite contains tests to demonstrate custom logs reporting via ReportingApi',
+    suiteName,
+  );
 
   test('Test should contain logs', () => {
-    ReportingApi.setDescription('This test demonstrates custom logs reporting via agent-js-playwright')
+    ReportingApi.setDescription('This test demonstrates custom logs reporting via ReportingApi');
+    ReportingApi.addAttributes([
+      {
+        key: 'feature',
+        value: 'customLogs',
+      },
+      {
+        key: 'browser',
+        value: 'chrome',
+      },
+      {
+        value: 'demo',
+      },
+    ], suiteName);
     ReportingApi.info( 'INFO log for test');
     ReportingApi.debug( 'DEBUG log for test');
     ReportingApi.trace('TRACE log for test');
@@ -78,7 +94,20 @@ test.describe('launch, suite and test should contain logs', () => {
 
 
   test('Test should contain logs with attachments',  async () => {
-    ReportingApi.setDescription('This test demonstrates custom logs with attachments reporting via agent-js-playwright')
+    ReportingApi.setDescription('This test demonstrates custom logs with attachments reporting via reportingApi');
+    ReportingApi.addAttributes([
+      {
+        key: 'feature',
+        value: 'customLogsWithAttachments',
+      },
+      {
+        key: 'browser',
+        value: 'chrome',
+      },
+      {
+        value: 'demo',
+      },
+    ], suiteName);
     const readFilesPromises = attachments.map(
       ({ filename, type }) =>
         new Promise((resolve, reject) =>
@@ -91,7 +120,7 @@ test.describe('launch, suite and test should contain logs', () => {
                 type,
                 content: data.toString('base64'),
               };
-              ReportingApi.info('info log with attachment', attachment);
+              ReportingApi.info(`Log with attachment ${filename}`, attachment);
               resolve();
             }),
         ),

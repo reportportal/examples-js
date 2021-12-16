@@ -1,14 +1,18 @@
 const { test, expect } = require('@playwright/test');
-const { ReportingApi } = require('@reportportal/agent-js-playwright/reportingApi');
+const { ReportingApi } = require('@reportportal/agent-js-playwright');
 
-test.describe('Description with error',  () => {
+const suiteName = 'Description with error';
+
+test.describe(suiteName,  () => {
+  ReportingApi.setDescription(
+    'This suite contains tests that should fail',
+    suiteName,
+  );
   ReportingApi.addAttributes([
     {
       key: 'feature',
-      value: 'errorMessageInDescription',
+      value: 'lastErrorInDescription',
     },
-  ], 'Description with error');
-  ReportingApi.addAttributes([
     {
       key: 'browser',
       value: 'chrome',
@@ -16,10 +20,41 @@ test.describe('Description with error',  () => {
     {
       value: 'demo',
     },
-  ], 'Description with error');
+  ], suiteName);
 
   test('Test should be failed',  () => {
-    ReportingApi.setDescription('Description for failed test');
+    ReportingApi.setDescription('Description for this test should contain the last error message, just check:');
+    ReportingApi.addAttributes([
+      {
+        key: 'feature',
+        value: 'lastErrorInDescription',
+      },
+      {
+        key: 'browser',
+        value: 'chrome',
+      },
+      {
+        value: 'demo',
+      },
+    ]);
     expect(false).toBe(true);
+  });
+
+  test('Test should be failed too',  () => {
+    ReportingApi.setDescription('Description for this test should contain the last error message, just check:');
+    ReportingApi.addAttributes([
+      {
+        key: 'feature',
+        value: 'lastErrorInDescription',
+      },
+      {
+        key: 'browser',
+        value: 'chrome',
+      },
+      {
+        value: 'demo',
+      },
+    ]);
+    expect(true).toBe(false);
   });
 });

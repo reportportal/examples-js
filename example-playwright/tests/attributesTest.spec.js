@@ -1,13 +1,21 @@
 const { test, expect } = require('@playwright/test');
-const { ReportingApi } = require('@reportportal/agent-js-playwright/reportingApi');
+const { ReportingApi } = require('@reportportal/agent-js-playwright');
+
+const suiteName = 'Show ReportPortal features';
 
 test.describe('Show ReportPortal features',  () => {
+  // set description to the suite
+  ReportingApi.setDescription(
+    'This suite contains tests with attributes provided via ReportingApi',
+    suiteName,
+  );
+  // add attributes to the suite
   ReportingApi.addAttributes([
     {
       key: 'feature',
       value: 'attributes',
     },
-  ], 'Show ReportPortal features');
+  ], suiteName);
   ReportingApi.addAttributes([
     {
       key: 'browser',
@@ -16,18 +24,44 @@ test.describe('Show ReportPortal features',  () => {
     {
       value: 'demo',
     },
-  ], 'Show ReportPortal features');
+  ], suiteName);
 
   test('should have the correct attributes',  () => {
+    // set description to the test
+    ReportingApi.setDescription('This test just expects that true is equal to true');
+    // add attributes to the test
     ReportingApi.addAttributes([
       {
         key: 'feature',
         value: 'attributes',
       },
       {
+        key: 'browser',
+        value: 'chrome',
+      },
+      {
         value: 'demo',
       },
     ]);
     expect(true).toBe(true);
+  });
+
+  test('should have the correct attributes too',  () => {
+    ReportingApi.setDescription('This test just expects that true is not equal to false',);
+    // add attributes to the test
+    ReportingApi.addAttributes([
+      {
+        key: 'feature',
+        value: 'attributes',
+      },
+      {
+        key: 'browser',
+        value: 'chrome',
+      },
+      {
+        value: 'demo',
+      },
+    ]);
+    expect(true).not.toBe(false);
   });
 });
