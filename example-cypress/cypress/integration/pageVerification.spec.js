@@ -14,33 +14,33 @@
  *  limitations under the License.
  */
 
-context('Cypress example page verification', () => {
-    beforeEach('Visit Cypress page', () => {
-        return cy.visit('https://example.cypress.io', { timeout: 10000 });
+context('Google example page verification', () => {
+    beforeEach('Visit Google page', () => {
+        return cy.visit('https://www.google.com/');
     });
 
-    it('Check that cypress page contains `Cypress` word', () => {
-        cy.info('Сypress example page: https://example.cypress.io');
-        cy.setTestDescription('This test case checks the *Cypress* word on the cypress example page.');
+    it('Check that Google page contains `Google` word', () => {
+        cy.info('Сypress example page: https://www.google.com/');
+        cy.setTestDescription('This test case checks the *Google* word on the Google example page.');
         cy.addTestAttributes([
             {
                 key: 'page',
-                value: 'cypress',
+                value: 'Google',
             },
         ]);
         cy.wait(500);
-        cy.info('Check if the `Cypress` word presented on the page #1');
-        cy.contains('Cypress');
-        cy.info('Check if the `Cypress` word presented on the page #2');
+        cy.info('Check if the `Google` word presented on the page #1');
+        cy.contains('Google');
+        cy.info('Check if the `Google` word presented on the page #2');
         cy.wait(500);
-        cy.contains('Cypress');
+        cy.contains('Google');
         cy.info('Some checks performed!');
     });
 
-    it('Check that cypress page contains `Cypress123` word', () => {
-        cy.info('Сypress example page: https://example.cypress.io');
+    it('Check that Google page contains `Google123` word', () => {
+        cy.info('Сypress example page: https://www.google.com/');
         cy.info('Add attributes to the test using `addTestAttributes` command');
-        cy.setTestDescription('This test case checks the `Cypress123` word on the cypress example page, but it fails.');
+        cy.setTestDescription('This test case checks the `Google123` word on the Google example page, but it fails.');
         cy.wait(500);
         cy.info('Add attributes to the test using `addTestAttributes` command');
         cy.addTestAttributes([
@@ -49,15 +49,15 @@ context('Cypress example page verification', () => {
                 value: 'shouldFail',
             },
         ]);
-        cy.warn('This test checks `Cypress123` word!');
+        cy.warn('This test checks `Google123` word!');
         cy.wait(500);
-        cy.info('Check if the `Cypress123` word presented on the page');
-        cy.contains('Cypress123');
+        cy.info('Check if the `Google123` word presented on the page');
+        cy.contains('Google123');
     });
 
-    it('Check that cypress page contains `Abrakadabra` word', () => {
-        cy.setTestDescription('This test case checks the `Abrakadabra` word on the cypress example page, but it fails.');
-        cy.info('Visit cypress example page: https://example.cypress.io');
+    it('Check that Google page contains `Abrakadabra` word', () => {
+        cy.setTestDescription('This test case checks the `Abrakadabra` word on the Google example page, but it fails.');
+        cy.info('Visit Google example page: https://www.google.com/');
         cy.wait(500);
         cy.info('Add attributes to the test using `addTestAttributes` command');
         cy.addTestAttributes([
@@ -70,6 +70,6 @@ context('Cypress example page verification', () => {
         cy.warn('This test fails!');
         cy.wait(500);
         cy.info('Check if the `Abrakadabra` word presented on the page');
-        cy.contains('Cypress123');
+        cy.contains('Google123');
     });
 });

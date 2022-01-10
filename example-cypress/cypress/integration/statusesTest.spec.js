@@ -15,8 +15,8 @@
  */
 
  context('populated statuses for launch/test', () => {
-  beforeEach('Visit Cypress page', () => {
-    return cy.visit('https://example.cypress.io', { timeout: 10000 });
+  beforeEach('Visit Google page', () => {
+    return cy.visit('https://www.google.com/');
   });
   it('should have status failed', () => {
     cy.setTestDescription('This test should have manually provided `Failed` status');
@@ -27,7 +27,7 @@
       },
     ]);
     cy.setStatusFailed();
-    cy.contains('Cypress');
+    cy.contains('Google');
   });
 
   it('should have status passed', () => {
@@ -51,7 +51,7 @@
       },
     ]);
     cy.setStatusSkipped();
-    cy.contains('Cypress');
+    cy.contains('Google');
   });
 
   it('should have status stopped', () => {
@@ -63,7 +63,7 @@
       },
     ]);
     cy.setStatusStopped();
-    cy.contains('Cypress');
+    cy.contains('Google');
   });
 
   it('should have status interrupted', () => {
@@ -75,7 +75,7 @@
       },
     ]);
     cy.setStatusInterrupted();
-    cy.contains('Cypress');
+    cy.contains('Google');
   });
 
   it('should have status cancelled', () => {
@@ -87,6 +87,6 @@
       },
     ]);
     cy.setStatusCancelled();
-    cy.contains('Cypress');
+    cy.contains('Google');
   });
 });
