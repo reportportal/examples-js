@@ -15,8 +15,8 @@
  */
 
 context('Logs for tests and launch', () => {
-  beforeEach('Visit Cypress page', () => {
-    return cy.visit('https://example.cypress.io', { timeout: 10000 });
+  beforeEach('Visit Google page', () => {
+    return cy.visit('https://www.google.com/');
   });
   it('should send logs to the launch', () => {
     cy.setTestDescription('This test sends logs with different levels to the launch');
@@ -33,7 +33,7 @@ context('Logs for tests and launch', () => {
     cy.launchError('error launch log');
     cy.launchFatal('fatal launch log');
 
-    cy.contains('Cypress');
+    cy.contains('Google');
   });
 
   it('should send logs to the test item', () => {
@@ -44,7 +44,7 @@ context('Logs for tests and launch', () => {
         value: 'testItemLogs',
       },
     ]);
-    cy.log('cypress log message');
+    cy.log('Cypress log message');
     cy.trace('trace message');
     cy.debug('debug message');
     cy.info('info message');
@@ -60,7 +60,7 @@ context('Logs for tests and launch', () => {
       });
     });
 
-    cy.contains('Cypress');
+    cy.contains('Google');
   });
 
   it('should contain the description', () => {
@@ -73,6 +73,6 @@ context('Logs for tests and launch', () => {
       },
     ]);
 
-    cy.contains('Cypress');
+    cy.contains('Google');
   });
 });

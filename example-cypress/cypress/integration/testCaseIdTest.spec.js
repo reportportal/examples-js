@@ -15,14 +15,14 @@
  */
 
 context('Awesome suite', () => {
-    beforeEach('Visit Cypress page', () => {
-        return cy.visit('https://example.cypress.io', { timeout: 10000 });
+    beforeEach('Visit Google page', () => {
+        return cy.visit('https://www.google.com/');
     });
-    it('should check the `Cypress123` word', () => {
-        cy.info('Visit cypress example page: https://example.cypress.io');
+    it('should check the `Google123` word', () => {
+        cy.info('Visit Google example page: https://www.google.com/');
         cy.setTestDescription('This test case contains explicit test case id');
 
-        cy.contains('Cypress');
+        cy.contains('Google');
         cy.info('Use timeout 1000ms');
         cy.wait(1000);
         cy.addTestAttributes([
@@ -37,12 +37,12 @@ context('Awesome suite', () => {
         cy.setTestCaseId('testCaseIDForTheTest');
         cy.info('Use timeout 1000ms');
         cy.wait(1000);
-        cy.contains('Cypress123');
+        cy.contains('Google123');
     });
 
     it('Gets, types and asserts', () => {
-        cy.info('Visit cypress example page: https://example.cypress.io');
-        cy.visit('https://example.cypress.io');
+        cy.info('Visit Google example page: https://www.google.com/');
+        cy.visit('https://www.google.com/');
         cy.info('Add attributes to the test using `addTestAttributes` command');
         cy.setTestDescription('This test case contains automatically generated test case id');
         cy.addTestAttributes([
@@ -52,17 +52,11 @@ context('Awesome suite', () => {
             },
         ]);
 
-        cy.info('Clicks on the type');
-        cy.contains('type').click();
         cy.wait(500);
         cy.info('Use timeout 500ms');
-        cy.info(`Should be on a new URL which includes '/commands/actions'`);
-        cy.url().should('include', '/commands/actions');
-        cy.info('Use timeout 1000ms');
-        cy.wait(1000);
 
         cy.info('Get an input, type into it and verify that the value has been updated');
-        cy.get('.action-email')
+        cy.get('input[type=text]')
             .type('fake@email.com')
             .should('have.value', 'fake@email.com');
         cy.info('Some checks performed!');
