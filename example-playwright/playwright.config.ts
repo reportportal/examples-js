@@ -20,11 +20,24 @@ const config = {
   projects: [
     {
       name: 'default',
-      testIgnore: ['retriesTest.spec.js'],
+      testIgnore: ['retriesTest.spec.ts', 'basicTest.spec.ts'],
+    },
+    {
+      name: 'withAttachments',
+      testMatch: /basicTest.spec.ts/,
+      use: {
+        screenshot: "only-on-failure",
+        video: "retain-on-failure",
+        trace: "retain-on-failure",
+      },
+    },
+    {
+      name: 'withoutAttachments',
+      testMatch: /basicTest.spec.ts/,
     },
     {
       name: 'retried',
-      testMatch: /retriesTest.spec.js/,
+      testMatch: /retriesTest.spec.ts/,
       retries: 2,
     },
   ],
