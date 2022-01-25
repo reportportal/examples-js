@@ -1,7 +1,7 @@
-const { test, expect } = require('@playwright/test');
-const { ReportingApi } = require('@reportportal/agent-js-playwright');
-const fs = require('fs');
-const path = require('path');
+import { expect, test } from '@playwright/test';
+import { LOG_LEVELS, ReportingApi } from '@reportportal/agent-js-playwright';
+import * as fs from 'fs';
+import * as path from 'path';
 
 const attachments = [
   {
@@ -33,7 +33,7 @@ const attachments = [
 const suiteName = 'launch, suite and test should contain logs';
 
 test.describe(suiteName, () => {
-  ReportingApi.launchLog('INFO', 'launch log with manually specified info level');
+  ReportingApi.launchLog(LOG_LEVELS.INFO, 'launch log with manually specified info level');
   ReportingApi.launchInfo('info launch log');
   ReportingApi.launchDebug('debug launch log');
   ReportingApi.launchTrace('trace launch log');
@@ -110,7 +110,7 @@ test.describe(suiteName, () => {
     ], suiteName);
     const readFilesPromises = attachments.map(
       ({ filename, type }) =>
-        new Promise((resolve, reject) =>
+        new Promise<void>((resolve, reject) =>
             fs.readFile(path.resolve(__dirname, './attachments', filename), (err, data) => {
               if (err) {
                 reject(err);
@@ -127,6 +127,6 @@ test.describe(suiteName, () => {
     );
     await Promise.all(readFilesPromises);
 
-    await expect(true).toBe(true);
+    expect(true).toBe(true);
   })
 });

@@ -1,5 +1,5 @@
-const { test, expect } = require('@playwright/test');
-const { ReportingApi } = require('@reportportal/agent-js-playwright');
+import { test, expect } from '@playwright/test';
+import { ReportingApi} from '@reportportal/agent-js-playwright';
 
 const suiteName = 'Show ReportPortal features';
 
