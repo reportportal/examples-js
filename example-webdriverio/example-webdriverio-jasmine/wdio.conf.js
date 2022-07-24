@@ -8,9 +8,11 @@ const rpConfig = {
   launch: 'YourLauncherName',
   mode: 'DEFAULT',
   debug: false,
-  description: "Static launch description",
+  description: 'Static launch description',
   attributes: [{ key: 'key', value: 'value' }, { value: 'value' }],
   attachPicturesToLogs: true,
+  reportSeleniumCommands: true,
+  seleniumCommandsLogLevel: 'debug',
 };
 
 exports.config = {
@@ -156,21 +158,21 @@ exports.config = {
   },
   reporterSyncInterval: 1000,
   onPrepare: function (config, capabilities) {
-    fs.mkdir('./screenshots', function(err) {
+    fs.mkdir('./screenshots', function (err) {
       if (err) {
         console.log(err);
       } else {
         console.log('New directory successfully created.');
       }
-    })
+    });
   },
   onComplete: function (exitCode, config, capabilities, results) {
-    fs.rmdir('./screenshots', { recursive: true },function(err) {
+    fs.rmdir('./screenshots', { recursive: true }, function (err) {
       if (err) {
         console.log(err);
       } else {
         console.log('Directory successfully removed.');
       }
-    })
+    });
   },
 };
