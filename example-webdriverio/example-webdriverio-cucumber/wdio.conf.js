@@ -7,9 +7,12 @@ const rpConfig = {
   launch: 'YourLauncherName',
   mode: 'DEFAULT',
   debug: false,
-  description: "Static launch description",
+  description: 'Static launch description',
   attributes: [{ key: 'key', value: 'value' }, { value: 'value' }],
   attachPicturesToLogs: true,
+  reportSeleniumCommands: true,
+  seleniumCommandsLogLevel: 'debug',
+  cucumberNestedSteps: false,
 };
 
 exports.config = {
