@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { When, Then } = require('cucumber');
+const { When, Then } = require('@cucumber/cucumber');
 
 When('I put {string}', function(givenValue) {
   this.setTestCaseId('testCaseId');

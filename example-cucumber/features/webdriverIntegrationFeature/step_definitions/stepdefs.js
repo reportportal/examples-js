@@ -1,4 +1,4 @@
-const { Given, When, Then } = require('cucumber');
+const { Given, When, Then } = require('@cucumber/cucumber');
 const { until } = require('selenium-webdriver');
 
 Given(/^I am on the Cucumber.js GitHub repository/, function(callback) {
