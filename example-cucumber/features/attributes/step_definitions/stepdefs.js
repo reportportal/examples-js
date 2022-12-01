@@ -1,5 +1,5 @@
 const assert = require('assert');
-const {When, Then} = require('cucumber');
+const {When, Then} = require('@cucumber/cucumber');
 
 When('I put {string}', function (givenValue) {
   this.addAttributes([{key: 'key_1', value: 'value_1'}, {value: 'value_1'}]);

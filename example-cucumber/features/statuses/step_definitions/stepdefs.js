@@ -1,6 +1,6 @@
 
 const assert = require('assert');
-const { Before, When, Then } = require('cucumber');
+const { Before, When, Then } = require('@cucumber/cucumber');
 
 Before('', function () {
   this.setLaunchStatusStopped();

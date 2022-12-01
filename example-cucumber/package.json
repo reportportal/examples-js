@@ -11,11 +11,11 @@
     "example:statusesTest": "cucumber-js features/statuses --require=features/statuses/**/*.js"
   },
   "dependencies": {
-    "@reportportal/agent-js-cucumber": "^5.0.0",
-    "chromedriver": "^90.0.0",
+    "@reportportal/agent-js-cucumber": "^5.1.0",
+    "chromedriver": "^107.0.3",
     "selenium-webdriver": "^3.5.0"
   },
   "peerDependencies": {
-    "cucumber": "4.x - 6.x"
+    "@cucumber/cucumber": "7.x - 8.x"
   }
 }

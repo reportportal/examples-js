@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { After, Before, When, Then } = require('cucumber');
+const { After, Before, When, Then } = require('@cucumber/cucumber');
 
 Before(function() {
   this.fatal('Before fatal log');

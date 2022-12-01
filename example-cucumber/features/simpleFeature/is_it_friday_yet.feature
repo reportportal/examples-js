@@ -20,8 +20,3 @@ Feature: Is it Friday yet?
     Given today is Monday
     When I ask whether it's Monday yet
     Then I should be told Yes
-
-  Scenario: Today is Tuesday, not Monday (but it's failing)
-    Given today is Tuesday
-    When I ask whether it's Monday yet
-    Then I should be told Nope

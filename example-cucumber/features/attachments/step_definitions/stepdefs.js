@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { When } = require('cucumber');
+const { When } = require('@cucumber/cucumber');
 
 When('I report attachment with type {string} and {string}', function(type, filePath, callback) {
   fs.readFile(path.resolve(__dirname, '../files', filePath), (err, data) => {
