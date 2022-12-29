@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "Node",
+    "module": "ESNext",
+    "target": "ES2018",
+    "lib": ["ESNext", "ESNext.AsyncIterable", "dom"],
+    "esModuleInterop": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "strict": true,
+    "noEmit": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@@/*": [
+        "./*"
+      ],
+      "@/*": [
+        "./src/*"
+      ],
+      "~/*": [
+        "./src/*"
+      ]
+    },
+    "types": [
+      "@types/node",
+      "@types/mocha",
+      "cypress",
+      "node"
+    ]
+  },
+  "exclude": ["node_modules"],
+  "include": [
+    "./**/*.ts",
+    "cypress.config.ts"
+  ],
+}
