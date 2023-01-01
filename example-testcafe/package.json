@@ -4,7 +4,7 @@
     "test:viaCLI": "testcafe"
   },
   "devDependencies": {
-    "testcafe": "1.15.1",
+    "testcafe": "15.1.317922",
     "testcafe-reporter-agent-js-testcafe": "npm:@reportportal/testcafe-reporter-agent-js-testcafe@^5.0.0"
   }
 }
