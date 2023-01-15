@@ -3,7 +3,7 @@
     "test": "npx playwright test --config=playwright.config.ts"
   },
   "devDependencies": {
-    "@reportportal/agent-js-playwright": "^5.0.0",
-    "@playwright/test": "^1.17.1"
+    "@reportportal/agent-js-playwright": "^5.0.8",
+    "@playwright/test": "^1.29.2"
   }
 }

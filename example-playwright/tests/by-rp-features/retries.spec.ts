@@ -1,33 +1,29 @@
 import { test, expect } from '@playwright/test';
-import { ReportingApi} from '@reportportal/agent-js-playwright';
+import { ReportingApi } from '@reportportal/agent-js-playwright';
 
-const suiteName = 'Suite with retries';
+const suiteName = 'Suite to demonstrate reporting of retried tests.';
 
 test.describe(suiteName,  () => {
   ReportingApi.addAttributes([
     {
       key: 'feature',
-      value: 'retry',
-    },
-    {
-      key: 'browser',
-      value: 'chrome',
+      value: 'retries',
     },
     {
       value: 'demo',
     },
   ], suiteName);
-  ReportingApi.setDescription('This suite demonstrates retries logic', suiteName);
+  ReportingApi.setDescription('This suite demonstrates retries reporting', suiteName);
 
-  test('Failed test with retries', async ({page}, testInfo) => {
+  test('should be passed on the second retry', async ({ page, browserName }, testInfo) => {
     ReportingApi.addAttributes([
       {
         key: 'feature',
-        value: 'retry',
+        value: 'retries',
       },
       {
         key: 'browser',
-        value: 'chrome',
+        value: browserName,
       },
       {
         value: 'demo',
@@ -40,7 +36,7 @@ test.describe(suiteName,  () => {
     if (testInfo.retry > 1) {
       expectedTitle = 'Playwright';
     }
-    ReportingApi.info(`Use ${expectedTitle} word to title check`);
+    console.log(`Use ${expectedTitle} word to title check`);
 
     await page.goto('https://playwright.dev/');
     const title = page.locator('.navbar__inner .navbar__title');
