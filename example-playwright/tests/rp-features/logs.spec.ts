@@ -18,6 +18,15 @@ test.describe(suiteName, () => {
     suiteName,
   );
 
+  // add logs for suite via ReportingApi methods
+  ReportingApi.log(LOG_LEVELS.INFO, 'suite log with manually specified info level', undefined, suiteName);
+  ReportingApi.info('INFO log for suite', undefined, suiteName);
+  ReportingApi.debug( 'DEBUG log for suite', undefined, suiteName);
+  ReportingApi.trace('TRACE log for suite', undefined, suiteName);
+  ReportingApi.warn('WARN log for suite', undefined, suiteName);
+  ReportingApi.error( 'ERROR log for suite', undefined, suiteName);
+  ReportingApi.fatal( 'FATAL log for suite', undefined, suiteName);
+
   test('should be failed, should contain logs provided via console methods', () => {
     ReportingApi.addAttributes([
       {
@@ -70,7 +79,7 @@ test.describe(suiteName, () => {
     expect(false).toBe(true);
   });
 
-  test('should be failed, should add logs for suite via ReportingApi methods', () => {
+  test.skip('should be failed, should add logs for suite via ReportingApi methods', () => {
     ReportingApi.setDescription('This test demonstrates suite logs reporting via ReportingApi. See [ReportingApi.log](https://github.com/reportportal/agent-js-playwright#log)');
     ReportingApi.addAttributes([
       {

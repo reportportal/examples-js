@@ -58,7 +58,7 @@ test.describe(suiteName, () => {
       e.g. some important notes from the Test Case Management system, special conditions, etc.
     `);
 
-    console.log('The "Gat started" link will be clicked.');
+    console.log('The "Get started" link will be clicked.');
 
     await page.goto('https://playwright.dev/');
     await page.getByRole('link', { name: 'Get started' }).click();

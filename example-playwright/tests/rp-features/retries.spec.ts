@@ -36,7 +36,7 @@ test.describe(suiteName,  () => {
     if (testInfo.retry > 1) {
       expectedTitle = 'Playwright';
     }
-    console.log(`Use ${expectedTitle} word to title check`);
+    console.log(`Use "${expectedTitle}" word to title check`);
 
     await page.goto('https://playwright.dev/');
     const title = page.locator('.navbar__inner .navbar__title');

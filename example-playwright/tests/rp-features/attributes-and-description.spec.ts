@@ -6,7 +6,7 @@ const suiteName = 'Attributes and description repoting';
 test.describe(suiteName,  () => {
   // set description to the suite
   ReportingApi.setDescription(
-    'This suite contains tests with attributes provided via ReportingApi',
+    'This suite contains tests with attributes and description provided via ReportingApi',
     suiteName,
   );
   // add attributes to the suite

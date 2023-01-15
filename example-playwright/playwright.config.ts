@@ -27,7 +27,7 @@ const config: PlaywrightTestConfig = {
     },
     {
       name: 'by-rp-features',
-      testDir: './tests/by-rp-features',
+      testDir: './tests/rp-features',
       testIgnore: ['retries.spec.ts'],
       use: {
         screenshot: 'only-on-failure',
