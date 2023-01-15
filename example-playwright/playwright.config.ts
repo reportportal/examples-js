@@ -1,3 +1,5 @@
+import { PlaywrightTestConfig } from '@playwright/test';
+
 const RPconfig = {
   token: '00000000-0000-0000-0000-000000000000',
   endpoint: 'https://your.reportportal.server/api/v1',
@@ -15,29 +17,27 @@ const RPconfig = {
   description: 'This is an example launch with playwright tests',
 };
 
-const config = {
+const config: PlaywrightTestConfig = {
   reporter: [['line'], ['@reportportal/agent-js-playwright', RPconfig]],
+  testDir: './tests',
   projects: [
     {
-      name: 'default',
-      testIgnore: ['retriesTest.spec.ts', 'basicTest.spec.ts'],
+      name: 'basic',
+      testDir: './tests/basic',
     },
     {
-      name: 'withAttachments',
-      testMatch: /basicTest.spec.ts/,
+      name: 'by-rp-features',
+      testDir: './tests/rp-features',
+      testIgnore: ['retries.spec.ts'],
       use: {
-        screenshot: "only-on-failure",
-        video: "retain-on-failure",
-        trace: "retain-on-failure",
+        screenshot: 'only-on-failure',
+        video: 'retain-on-failure',
+        trace: 'retain-on-failure',
       },
     },
     {
-      name: 'withoutAttachments',
-      testMatch: /basicTest.spec.ts/,
-    },
-    {
-      name: 'retried',
-      testMatch: /retriesTest.spec.ts/,
+      name: 'with-retries',
+      testMatch: /retries.spec.ts/,
       retries: 2,
     },
   ],
