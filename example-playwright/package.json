@@ -1,6 +1,9 @@
 {
   "scripts": {
-    "test": "npx playwright test --config=playwright.config.ts"
+    "test": "npx playwright test --config=playwright.config.ts",
+    "test:basic": "npx playwright test --config=playwright.config.ts --project=basic",
+    "test:by-rp-features": "npx playwright test --config=playwright.config.ts --project=by-rp-features",
+    "test:with-retries": "npx playwright test --config=playwright.config.ts --project=with-retries"
   },
   "devDependencies": {
     "@reportportal/agent-js-playwright": "^5.0.8",
