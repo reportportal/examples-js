@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { ReportingApi} from '@reportportal/agent-js-playwright';
+import { ReportingApi } from '@reportportal/agent-js-playwright';
 
 const suiteName = 'More checks related to Playwright website. It should';
 
@@ -44,7 +44,7 @@ test.describe(suiteName, () => {
     await expect(page).toHaveTitle(/Playwright/);
   });
 
-  test('redirect to "intro" page after clicking on get started link', async ({ page, browserName }) => {
+  test('redirect to "intro" page after clicking on get started link', async ({ page, browserName }, testInfo) => {
     ReportingApi.addAttributes([
       {
         key: 'browser',
@@ -61,6 +61,10 @@ test.describe(suiteName, () => {
     console.log('The "Get started" link will be clicked.');
 
     await page.goto('https://playwright.dev/');
+
+    const screenshot = await page.screenshot();
+    await testInfo.attach('screenshot', { body: screenshot, contentType: 'image/png' });
+
     await page.getByRole('link', { name: 'Get started' }).click();
     await expect(page).toHaveURL(/.*intro/);
   });
