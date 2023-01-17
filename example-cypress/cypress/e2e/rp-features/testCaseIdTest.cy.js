@@ -57,8 +57,8 @@ context('Awesome suite', () => {
 
         cy.info('Get an input, type into it and verify that the value has been updated');
         cy.get('input[type=text]')
-            .type('fake@email.com')
-            .should('have.value', 'fake@email.com');
+          .type('fake@email.com')
+          .should('have.value', 'fake@email.com');
         cy.info('Some checks performed!');
     });
 });

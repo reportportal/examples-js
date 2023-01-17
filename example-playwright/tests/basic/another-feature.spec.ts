@@ -22,7 +22,7 @@ test.describe(suiteName, () => {
     },
   ], suiteName);
   ReportingApi.setDescription(
-    'This suite contains several tests that performs some checks with the Playwright website main page.',
+    'This suite contains several tests that performs some checks with the **Playwright** website main page.',
     suiteName,
   );
 
@@ -36,8 +36,8 @@ test.describe(suiteName, () => {
         value: 'demo',
       },
     ]);
-    ReportingApi.setDescription(`The test name is self-descriptive, but do not hesitate to provide additional info about the test,
-      e.g. some important notes from the Test Case Management system, special conditions, etc.
+    ReportingApi.setDescription(`The test name is self-descriptive, but do not hesitate to provide additional *info* about the test,
+      e.g. some important notes from the **Test Case Management system**, special conditions, etc.
     `);
 
     await page.goto('https://playwright.dev/');
@@ -54,11 +54,11 @@ test.describe(suiteName, () => {
         value: 'demo',
       },
     ]);
-    ReportingApi.setDescription(`The test name is self-descriptive, but do not hesitate to provide additional info about the test,
-      e.g. some important notes from the Test Case Management system, special conditions, etc.
+    ReportingApi.setDescription(`The test name is self-descriptive, but do not hesitate to provide additional *info* about the test,
+      e.g. some important notes from the **Test Case Management system**, special conditions, etc.
     `);
 
-    console.log('The "Get started" link will be clicked.');
+    console.log('The *"Get started"* link will be clicked.');
 
     await page.goto('https://playwright.dev/');
 
