@@ -25,6 +25,7 @@ module.exports = defineConfig({
     },
   },
   e2e: {
+    specPattern: 'cypress/e2e/basic/*.cy.js',
     setupNodeEvents(on, config) {
       return registerReportPortalPlugin(on, config)
     },
