@@ -1,13 +1,15 @@
 {
   "scripts": {
-    "test": "cypress run --headless"
+    "test": "cypress run --headless",
+    "test:parallel": "cypress-parallel --script test --specsDir cypress/e2e/basic --r 'cypress-multi-reporters' --p 'multi-reporter-config.js'",
+    "merge:launches": "node mergeRpLaunches.js"
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@reportportal/agent-js-cypress": "^5.1.0",
     "cypress": "12.3.0",
+    "@reportportal/agent-js-cypress": "^5.1.0",
     "cypress-multi-reporters": "^1.5.0",
-    "mochawesome": "6.2.2",
+    "cypress-parallel": "^0.12.0",
     "typescript": "4.9.4"
   }
 }
