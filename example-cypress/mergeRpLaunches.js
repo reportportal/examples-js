@@ -1,6 +1,6 @@
 const fs = require('fs');
 const glob = require('glob');
-const { mergeLaunches: mergeRpLaunches } = require('@reportportal/agent-js-cypress/lib/mergeLaunches');
+const { mergeLaunches } = require('@reportportal/agent-js-cypress/lib/mergeLaunches');
 const reportersConfig = require('./multi-reporter-config');
 
 const rpConfig = reportersConfig.reportportalAgentJsCypressReporterOptions;
@@ -13,21 +13,16 @@ const deleteTempFile = (filename) => {
   fs.unlinkSync(filename);
 };
 
-async function mergeReportPortalLaunches(rpConfig) {
-  let processExitCode = 0;
-
+async function mergeReportPortalLaunches() {
   try {
-    await mergeRpLaunches(rpConfig);
+    await mergeLaunches(rpConfig);
     console.log('Launches successfully merged!');
   } catch (error) {
-    processExitCode = 1;
     console.error(error);
   } finally {
     const files = getLaunchTempFiles();
     files.forEach(deleteTempFile);
   }
-
-  process.exit(processExitCode);
 }
 
 mergeReportPortalLaunches();
