@@ -8,7 +8,7 @@ Do not forget to install all the necessary dependencies:
 npm install
 ```
 
-`npm install cucumber --no-save` - to install cucumber as a peer dependency. You can specify needed version by replacing `cucumber` with `cucumber@<version>`, for example, `cucumber@6`.
+`npm install @cucumber/cucumber --no-save` - to install cucumber as a peer dependency. You can specify needed version by replacing `@cucumber/cucumber` with `@cucumber/cucumber@<version>`, for example, `@cucumber/cucumber@7`.
 
 ## Run the example
 
