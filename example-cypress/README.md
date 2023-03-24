@@ -1,5 +1,7 @@
 ## Example for [@reportportal/agent-js-cypress](https://www.npmjs.com/package/@reportportal/agent-js-cypress)
 
+The examples are written with Cypress >=9 compatibility in mind, but the agent also works with Cypress <9.
+
 ## Installation:
 
 Install the packages:
