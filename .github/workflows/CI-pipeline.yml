@@ -34,8 +34,8 @@ jobs:
         with:
           node-version: 18
       - name: Go to Playwright example dir
-        run: cd example-playwright
-      - name: Install of node dependencies
-        run: npm install
-      - name: Run tests
-        run: npm run test:basic
+        run: |
+          cd "./example-playwright"
+          pwd
+          npm install
+          npm run test:basic
