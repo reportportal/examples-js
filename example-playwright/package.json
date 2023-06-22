@@ -3,10 +3,11 @@
     "test": "npx playwright test --config=playwright.config.ts",
     "test:basic": "npx playwright test --config=playwright.config.ts --project=basic",
     "test:by-rp-features": "npx playwright test --config=playwright.config.ts --project=by-rp-features",
-    "test:with-retries": "npx playwright test --config=playwright.config.ts --project=with-retries"
+    "test:with-retries": "npx playwright test --config=playwright.config.ts --project=with-retries",
+    "test:check": "npx playwright test --config=playwright.config.ts --project=check"
   },
   "devDependencies": {
-    "@reportportal/agent-js-playwright": "^5.1.1",
-    "@playwright/test": "^1.35.1"
+    "@reportportal/agent-js-playwright": "https://github.com/reportportal/agent-js-playwright#test-step-id-fix",
+    "@playwright/test": "1.35.1"
   }
 }
