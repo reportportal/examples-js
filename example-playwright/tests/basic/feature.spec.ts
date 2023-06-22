@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { ReportingApi } from '@reportportal/agent-js-playwright';
+import { commonStep } from './common';
 
 test('The Playwright`s website main page should contain "ReportPortal" word', async ({ page, browserName }) => {
   console.log('Add **ReportPortal** related *metadata* before starting main test actions.');
@@ -23,3 +24,7 @@ test('The Playwright`s website main page should contain "ReportPortal" word', as
   const title = page.locator('.navbar__inner .navbar__title');
   await expect(title).toHaveText('ReportPortal');
 });
+
+test('Ma test', async ({ page}) => {
+  commonStep(page);
+})

@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { ReportingApi } from '@reportportal/agent-js-playwright';
+import { commonStep } from './common';
 
 const suiteName = 'More checks related to Playwright website. It should';
 
@@ -41,8 +42,53 @@ test.describe(suiteName, () => {
     `);
 
     await page.goto('https://playwright.dev/');
+
+    commonStep(page);
+
     await expect(page).toHaveTitle(/Playwright/);
   });
+
+  test.describe(suiteName, () => {
+    test('has the correct title', async ({ page, browserName }) => {
+      ReportingApi.addAttributes([
+        {
+          key: 'browser',
+          value: browserName,
+        },
+        {
+          value: 'demo',
+        },
+      ]);
+      ReportingApi.setDescription(`The test name is self-descriptive, but do not hesitate to provide additional *info* about the test,
+      e.g. some important notes from the **Test Case Management system**, special conditions, etc.
+    `);
+
+      await page.goto('https://playwright.dev/');
+      await expect(page).toHaveTitle(/Playwright/);
+    });
+
+    test.describe('Nested suite', () => {
+      test.describe(suiteName, () => {
+        test('has the correct title', async ({ page, browserName }) => {
+          ReportingApi.addAttributes([
+            {
+              key: 'browser',
+              value: browserName,
+            },
+            {
+              value: 'demo',
+            },
+          ]);
+          ReportingApi.setDescription(`The test name is self-descriptive, but do not hesitate to provide additional *info* about the test,
+      e.g. some important notes from the **Test Case Management system**, special conditions, etc.
+    `);
+
+          await page.goto('https://playwright.dev/');
+          await expect(page).toHaveTitle(/Playwright/);
+        });
+      })
+    })
+  })
 
   test('redirect to "intro" page after clicking on get started link', async ({ page, browserName }, testInfo) => {
     ReportingApi.addAttributes([
