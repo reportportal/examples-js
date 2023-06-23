@@ -6,7 +6,7 @@
     "test:with-retries": "npx playwright test --config=playwright.config.ts --project=with-retries"
   },
   "devDependencies": {
-    "@reportportal/agent-js-playwright": "^5.1.1",
-    "@playwright/test": "^1.35.1"
+    "@reportportal/agent-js-playwright": "5.1.2",
+    "@playwright/test": "1.35.1"
   }
 }

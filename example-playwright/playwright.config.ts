@@ -1,7 +1,7 @@
 import { PlaywrightTestConfig } from '@playwright/test';
 
 const RPconfig = {
-  token: '00000000-0000-0000-0000-000000000000',
+  apiKey: '00000000-0000-0000-0000-000000000000',
   endpoint: 'https://your.reportportal.server/api/v1',
   project: 'Your project',
   launch: 'Custom regression',
@@ -15,10 +15,30 @@ const RPconfig = {
     },
   ],
   description: 'This is an example launch with playwright tests',
+  restClientConfig: {
+    timeout: 0,
+  },
 };
 
 const config: PlaywrightTestConfig = {
-  reporter: [['line'], ['@reportportal/agent-js-playwright', RPconfig]],
+  timeout: 2 * 60 * 1000,
+  expect: {
+    timeout: 8000,
+  },
+  retries: 0,
+  workers: 1,
+  use: {
+    headless: true,
+    screenshot: {
+      mode: 'only-on-failure',
+      fullPage: true,
+    },
+    video: 'retain-on-failure',
+    actionTimeout: 8000,
+    navigationTimeout: 40000,
+    trace: 'retain-on-failure',
+  },
+  reporter: [['@reportportal/agent-js-playwright', RPconfig]],
   testDir: './tests',
   projects: [
     {
@@ -29,11 +49,6 @@ const config: PlaywrightTestConfig = {
       name: 'by-rp-features',
       testDir: './tests/rp-features',
       testIgnore: ['retries.spec.ts'],
-      use: {
-        screenshot: 'only-on-failure',
-        video: 'retain-on-failure',
-        trace: 'retain-on-failure',
-      },
     },
     {
       name: 'with-retries',

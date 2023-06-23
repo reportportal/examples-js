@@ -41,6 +41,11 @@ test.describe(suiteName, () => {
     `);
 
     await page.goto('https://playwright.dev/');
+
+    await test.step('step. Have "Playwright" title', async () => {
+      await expect(page).toHaveTitle(/Playwright/);
+    });
+
     await expect(page).toHaveTitle(/Playwright/);
   });
 

@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { LOG_LEVELS, ReportingApi } from '@reportportal/agent-js-playwright';
+import { ReportingApi } from '@reportportal/agent-js-playwright';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -46,48 +46,6 @@ test.describe(suiteName, () => {
     'This suite contains tests to demonstrate attachments reporting via ReportingApi',
     suiteName,
   );
-
-  test('should be failed, should contain attachments provided via ReportingApi methods', async () => {
-    ReportingApi.setDescription('This test demonstrates attachments reporting via ReportingApi');
-    ReportingApi.addAttributes([
-      {
-        key: 'feature',
-        value: 'attachments',
-      },
-      {
-        key: 'entity',
-        value: 'test',
-      },
-      {
-        key: 'method',
-        value: 'reporting-api',
-      },
-      {
-        value: 'demo',
-      },
-    ]);
-
-    const readFilesPromises = attachments.map(
-      ({ filename, type }) =>
-        new Promise<void>((resolve, reject) =>
-          fs.readFile(path.resolve(__dirname, './attachments', filename), (err, data) => {
-            if (err) {
-              reject(err);
-            }
-            const attachment = {
-              name: filename,
-              type,
-              content: data.toString('base64'),
-            };
-            ReportingApi.info(`Log with attachment ${filename}`, attachment);
-            resolve();
-          }),
-        ),
-    );
-    await Promise.all(readFilesPromises);
-
-    expect(false).toBe(true);
-  });
 
   test('should be passed, should contain attachments provided via Playwright testInfo.attach',  async ({ page }, testInfo) => {
     ReportingApi.setDescription('This test demonstrates attachments reporting via Playwright testInfo.attach');
@@ -151,6 +109,48 @@ test.describe(suiteName, () => {
     await testInfo.attach('screenshot', { body: screenshot, contentType: 'image/png' });
 
     await expect(page).toHaveTitle(/Playwright/);
+  });
+
+  test.skip('should be failed, should contain attachments provided via ReportingApi methods', async () => {
+    ReportingApi.setDescription('This test demonstrates attachments reporting via ReportingApi');
+    ReportingApi.addAttributes([
+      {
+        key: 'feature',
+        value: 'attachments',
+      },
+      {
+        key: 'entity',
+        value: 'test',
+      },
+      {
+        key: 'method',
+        value: 'reporting-api',
+      },
+      {
+        value: 'demo',
+      },
+    ]);
+
+    const readFilesPromises = attachments.map(
+      ({ filename, type }) =>
+        new Promise<void>((resolve, reject) =>
+          fs.readFile(path.resolve(__dirname, './attachments', filename), (err, data) => {
+            if (err) {
+              reject(err);
+            }
+            const attachment = {
+              name: filename,
+              type,
+              content: data.toString('base64'),
+            };
+            ReportingApi.info(`Log with attachment ${filename}`, attachment);
+            resolve();
+          }),
+        ),
+    );
+    await Promise.all(readFilesPromises);
+
+    expect(false).toBe(true);
   });
 
   test.skip('should be failed, should add attachments to launch via ReportingApi methods', async () => {
