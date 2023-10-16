@@ -7,8 +7,8 @@
     "webdriver-start": "webdriver-manager start"
   },
   "devDependencies": {
-    "protractor": "^5.1.2",
-    "protractor-flake": "^2.5.0",
-    "@reportportal/agent-js-jasmine": "^5.0.0"
+    "protractor": "^5.4.4",
+    "protractor-flake": "^2.7.0",
+    "@reportportal/agent-js-jasmine": "^5.0.2"
   }
 }

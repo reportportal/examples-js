@@ -8,13 +8,13 @@ Install the packages:
 npm install
 ```
 
-Fill reporterOptions in Mocha: 
+Fill reporterOptions in Mocha:
 ```javascript
 const mochaMain = new Mocha({
   reporter: '@reportportal/agent-js-mocha',
   reporterOptions: {
     endpoint: 'http://your-instance.com:8080/api/v2',
-    token: '00000000-0000-0000-0000-000000000000',
+    apiKey: 'reportportalApiKey',
     launch: 'LAUNCH_NAME',
     project: 'PROJECT_NAME',
     description: 'LAUNCH_DESCRIPTION'

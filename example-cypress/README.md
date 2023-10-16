@@ -19,7 +19,7 @@ module.exports = defineConfig({
   reporter: '@reportportal/agent-js-cypress',
   reporterOptions: {
     endpoint: 'http://your-instance.com:8080/api/v1',
-    token: '00000000-0000-0000-0000-000000000000',
+    apiKey: 'reportportalApiKey',
     launch: 'LAUNCH_NAME',
     project: 'PROJECT_NAME',
     description: 'LAUNCH_DESCRIPTION',
@@ -48,7 +48,7 @@ module.exports = defineConfig({
     },
     reportportalAgentJsCypressReporterOptions: {
       endpoint: 'http://your-instance.com:8080/api/v1',
-      token: '00000000-0000-0000-0000-000000000000',
+      apiKey: 'reportportalApiKey',
       launch: 'LAUNCH_NAME',
       project: 'PROJECT_NAME',
       description: 'LAUNCH_DESCRIPTION',
