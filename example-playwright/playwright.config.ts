@@ -1,6 +1,6 @@
 import { PlaywrightTestConfig } from '@playwright/test';
 
-const RPconfig = {
+const rpConfig = {
   apiKey: '00000000-0000-0000-0000-000000000000',
   endpoint: 'https://your.reportportal.server/api/v1',
   project: 'Your project',
@@ -18,15 +18,18 @@ const RPconfig = {
   restClientConfig: {
     timeout: 0,
   },
+  includeTestSteps: true,
+  skippedIssue: false,
 };
 
 const config: PlaywrightTestConfig = {
   timeout: 2 * 60 * 1000,
   expect: {
-    timeout: 8000,
+    timeout: 10000,
   },
-  retries: 0,
-  workers: 1,
+  fullyParallel: true,
+  forbidOnly: true,
+  workers: 5,
   use: {
     headless: true,
     screenshot: {
@@ -38,7 +41,7 @@ const config: PlaywrightTestConfig = {
     navigationTimeout: 40000,
     trace: 'retain-on-failure',
   },
-  reporter: [['@reportportal/agent-js-playwright', RPconfig]],
+  reporter: [['@reportportal/agent-js-playwright', rpConfig]],
   testDir: './tests',
   projects: [
     {
@@ -58,4 +61,4 @@ const config: PlaywrightTestConfig = {
   ],
 };
 
-module.exports = config;
+export default config;
