@@ -111,7 +111,8 @@ test.describe(suiteName, () => {
     await expect(page).toHaveTitle(/Playwright/);
   });
 
-  test.skip('should be failed, should contain attachments provided via ReportingApi methods', async () => {
+  test('should be failed, should contain attachments provided via ReportingApi methods', async () => {
+    test.skip();
     ReportingApi.setDescription('This test demonstrates attachments reporting via ReportingApi');
     ReportingApi.addAttributes([
       {
@@ -153,7 +154,8 @@ test.describe(suiteName, () => {
     expect(false).toBe(true);
   });
 
-  test.skip('should be failed, should add attachments to launch via ReportingApi methods', async () => {
+  test('should be failed, should add attachments to launch via ReportingApi methods', async () => {
+    test.skip();
     ReportingApi.setDescription('This test demonstrates launch attachments reporting via ReportingApi. See [ReportingApi.launchLog](https://github.com/reportportal/agent-js-playwright#launchlog)');
     ReportingApi.addAttributes([
       {

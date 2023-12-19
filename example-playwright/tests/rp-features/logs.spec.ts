@@ -79,7 +79,8 @@ test.describe(suiteName, () => {
     expect(false).toBe(true);
   });
 
-  test.skip('should be failed, should add logs for suite via ReportingApi methods', () => {
+  test('should be failed, should add logs for suite via ReportingApi methods', () => {
+    test.skip();
     ReportingApi.setDescription('This test demonstrates suite logs reporting via ReportingApi. See [ReportingApi.log](https://github.com/reportportal/agent-js-playwright#log)');
     ReportingApi.addAttributes([
       {
@@ -105,7 +106,8 @@ test.describe(suiteName, () => {
     expect(false).toBe(true);
   });
 
-  test.skip('should be failed, should add launch logs via ReportingApi methods', () => {
+  test('should be failed, should add launch logs via ReportingApi methods', () => {
+    test.skip();
     ReportingApi.setDescription('This test demonstrates launch logs reporting via ReportingApi. See [ReportingApi.launchLog](https://github.com/reportportal/agent-js-playwright#launchlog)');
     ReportingApi.addAttributes([
       {
