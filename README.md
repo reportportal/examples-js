@@ -9,6 +9,7 @@ Examples for js integrations with ReportPortal.
 * example-webdriverio for [@reportportal/agent-js-webdriverio](https://www.npmjs.com/package/@reportportal/agent-js-webdriverio)
 * example-postman for [@reportportal/agent-js-postman](https://www.npmjs.com/package/@reportportal/newman-reporter-agent-js-postman)
 * example-cucumber for [@reportportal/agent-js-cucumber](https://www.npmjs.com/package/@reportportal/agent-js-cucumber)
+* example-vitest for [@reportportal/agent-js-vitest](https://npmjs.com/package/@reportportal/agent-js-vitest)
 * example-jasmine for [@reportportal/agent-js-jasmine](https://www.npmjs.com/package/@reportportal/agent-js-jasmine)
 * example-testcafe for [@reportportal/agent-js-testcafe](https://www.npmjs.com/package/@reportportal/testcafe-reporter-agent-js-testcafe)
 * example-nightwatch for [@reportportal/agent-js-nightwatch](https://www.npmjs.com/package/@reportportal/agent-js-nightwatch)
