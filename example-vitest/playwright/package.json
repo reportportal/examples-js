@@ -10,6 +10,6 @@
     "playwright": "^1.41.0",
     "vite": "latest",
     "vitest": "latest",
-    "@reportportal/agent-js-vitest": "file:../../../agent-js-vitest"
+    "@reportportal/agent-js-vitest": "^5.0.0"
   }
 }
