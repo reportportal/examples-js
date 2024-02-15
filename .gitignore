@@ -1,2 +1,10 @@
-node_modules/
+# IDE
 .idea/
+
+# Dependencies
+node_modules/
+package-lock.json
+
+# Compiled
+dist
+__snapshots__
