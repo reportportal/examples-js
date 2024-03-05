@@ -70,9 +70,6 @@ test.describe(suiteName, () => {
         key: 'browser',
         value: browserName,
       },
-      {
-        value: 'tag',
-      },
     ]);
 
     await page.goto('https://playwright.dev/');
@@ -92,9 +89,6 @@ test.describe(suiteName, () => {
       {
         key: 'browser',
         value: browserName,
-      },
-      {
-        value: 'tag',
       },
     ]);
 
