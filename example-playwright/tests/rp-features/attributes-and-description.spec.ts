@@ -56,7 +56,7 @@ test.describe(suiteName, () => {
     await expect(page).toHaveTitle(/Playwright/);
   });
 
-  test('@tag client.startTestItem should be called with one tag at the end', async ({
+  test('@tag should be passed with one static attribute reported from the beginning of the title', async ({
     page,
     browserName,
   }) => {
