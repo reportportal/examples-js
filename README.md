@@ -11,5 +11,5 @@ Examples for js integrations with ReportPortal.
 * example-cucumber for [agent-js-cucumber](https://github.com/reportportal/agent-js-cucumber)
 * example-vitest for [agent-js-vitest](https://github.com/reportportal/agent-js-vitest)
 * example-jasmine for [agent-js-jasmine](https://github.com/reportportal/agent-js-jasmine)
-* example-testcafe for [agent-js-testcafe](https://www.npmjs.com/package/@reportportal/testcafe-reporter-agent-js-testcafe)
+* example-testcafe for [agent-js-testcafe](https://github.com/reportportal/agent-js-testcafe)
 * example-nightwatch for [agent-js-nightwatch](https://www.npmjs.com/package/@reportportal/agent-js-nightwatch)
