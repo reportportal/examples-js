@@ -5,7 +5,7 @@ Examples for js integrations with ReportPortal.
 * example-playwright for [agent-js-playwright](https://github.com/reportportal/agent-js-playwright)
 * example-cypress for [agent-js-cypress](https://github.com/reportportal/agent-js-cypress)
 * example-jest for [agent-js-jest](https://github.com/reportportal/agent-js-jest)
-* example-mocha for [agent-js-mocha](https://www.npmjs.com/package/@reportportal/agent-js-mocha)
+* example-mocha for [agent-js-mocha](https://github.com/reportportal/agent-js-mocha)
 * example-webdriverio for [agent-js-webdriverio](https://www.npmjs.com/package/@reportportal/agent-js-webdriverio)
 * example-postman for [agent-js-postman](https://www.npmjs.com/package/@reportportal/newman-reporter-agent-js-postman)
 * example-cucumber for [agent-js-cucumber](https://www.npmjs.com/package/@reportportal/agent-js-cucumber)
