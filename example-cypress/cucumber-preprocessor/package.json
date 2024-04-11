@@ -12,6 +12,7 @@
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true,
     "stepDefinitions": [
+      "cypress/support/step_definitions.js",
       "cypress/e2e/**/step_definitions/*.js"
     ]
   }

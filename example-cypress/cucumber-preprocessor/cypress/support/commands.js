@@ -15,3 +15,15 @@
  */
 
 require('@reportportal/agent-js-cypress/lib/commands/reportPortalCommands');
+
+const CucumberKeywordMap = {
+  Outcome: 'Then',
+  Action: 'When',
+  Context: 'Given',
+};
+
+Cypress.Commands.add('logStep', (pickle) => {
+  const stepText = pickle.pickleStep.text;
+  const keyword = CucumberKeywordMap[pickle.pickleStep.type];
+  cy.log(`**${keyword} ${stepText}**`);
+});
