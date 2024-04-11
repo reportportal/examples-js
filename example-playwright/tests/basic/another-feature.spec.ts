@@ -4,8 +4,6 @@ import { ReportingApi } from '@reportportal/agent-js-playwright';
 const suiteName = 'More checks related to Playwright website. It should';
 
 test.describe(suiteName, () => {
-  test.describe.configure({ mode: 'serial', retries: 2 }); // use 'serial' mode and retries for this suite
-
   ReportingApi.addAttributes([
     {
       key: 'component',
