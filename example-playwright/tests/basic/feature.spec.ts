@@ -34,19 +34,6 @@ test('Just test', async ({ page, browserName }) => {
   await expect(title).toHaveText('ReportPortal');
 });
 
-test('Another test', async ({ page, browserName }) => {
-  await page.goto('https://playwright.dev/');
-  const title = page.locator('.navbar__inner .navbar__title');
-  await page.waitForTimeout(3000);
-  await expect(title).toHaveText('ReportPortal');
-});
-
-test('Test to pass', async ({ page, browserName }) => {
-  await page.goto('https://playwright.dev/');
-  const title = page.locator('.navbar__inner .navbar__title');
-  await expect(title).toHaveText('Playwright');
-});
-
 test.skip('Check that everything is ok', async ({ page, browserName }) => {
   console.log('Add **ReportPortal** related *metadata* before starting main test actions.');
   ReportingApi.addAttributes([
