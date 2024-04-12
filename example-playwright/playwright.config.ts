@@ -1,23 +1,6 @@
 import 'dotenv/config';
 import { PlaywrightTestConfig } from '@playwright/test';
 
-const rpConfig = {
-  apiKey: 'reportPortalApiKey',
-  endpoint: 'https://your.reportportal.server/api/v1',
-  project: 'Your project',
-  launch: 'Custom regression',
-  attributes: [
-    {
-      key: 'agent',
-      value: 'playwright',
-    },
-    {
-      value: 'example',
-    },
-  ],
-  description: 'This is an example launch with playwright tests',
-};
-
 const config: PlaywrightTestConfig = {
   timeout: 2 * 60 * 1000,
   expect: {
@@ -25,6 +8,7 @@ const config: PlaywrightTestConfig = {
   },
   fullyParallel: true,
   workers: 5,
+  retries: 2,
   use: {
     headless: true,
     screenshot: {
@@ -36,7 +20,6 @@ const config: PlaywrightTestConfig = {
     navigationTimeout: 40000,
     trace: 'retain-on-failure',
   },
-  reporter: [['@reportportal/agent-js-playwright', rpConfig]],
   testDir: './tests',
   projects: [
     {

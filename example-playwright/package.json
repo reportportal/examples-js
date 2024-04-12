@@ -5,7 +5,6 @@
   "devDependencies": {
     "@playwright/test": "^1.43.0",
     "@types/node": "^20.12.7",
-    "dotenv": "^16.4.5",
-    "@reportportal/agent-js-playwright": "^5.1.8"
+    "dotenv": "^16.4.5"
   }
 }

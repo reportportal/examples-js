@@ -1,21 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { ReportingApi } from '@reportportal/agent-js-playwright';
 
 test('The Playwright`s website main page should contain "ReportPortal" word', async ({ page, browserName }) => {
-  console.log('Add **ReportPortal** related *metadata* before starting main test actions.');
-  ReportingApi.addAttributes([
-    {
-      key: 'browser',
-      value: browserName,
-    },
-    {
-      value: 'demo',
-    },
-  ]);
-  ReportingApi.setDescription(`
-    This test simply checks that **Playwright** website contains **"ReportPortal"** word in the navigation bar.
-    But seems like this test will *fail*.
-  `);
   await page.waitForTimeout(1000);
 
   console.warn('Warning! The **Playwright** website may not contain "ReportPortal" mentions in its `navigation`.');
@@ -35,21 +20,6 @@ test('Just test', async ({ page, browserName }) => {
 });
 
 test.skip('Check that everything is ok', async ({ page, browserName }) => {
-  console.log('Add **ReportPortal** related *metadata* before starting main test actions.');
-  ReportingApi.addAttributes([
-    {
-      key: 'browser',
-      value: browserName,
-    },
-    {
-      value: 'demo',
-    },
-  ]);
-  ReportingApi.setDescription(`
-    This test simply checks that **Playwright** website contains **"ReportPortal"** word in the navigation bar.
-    But seems like this test will *fail*.
-  `);
-
   console.warn('Warning! The **Playwright** website may not contain "ReportPortal" mentions in its `navigation`.');
 
   await page.waitForTimeout(1000);
