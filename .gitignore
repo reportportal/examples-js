@@ -8,3 +8,6 @@ package-lock.json
 # Compiled
 dist
 __snapshots__
+
+# Environment
+.env

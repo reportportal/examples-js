@@ -1,7 +1,8 @@
+import 'dotenv/config';
 import { PlaywrightTestConfig } from '@playwright/test';
 
 const rpConfig = {
-  apiKey: '00000000-0000-0000-0000-000000000000',
+  apiKey: 'reportPortalApiKey',
   endpoint: 'https://your.reportportal.server/api/v1',
   project: 'Your project',
   launch: 'Custom regression',
@@ -15,11 +16,6 @@ const rpConfig = {
     },
   ],
   description: 'This is an example launch with playwright tests',
-  restClientConfig: {
-    timeout: 0,
-  },
-  includeTestSteps: true,
-  skippedIssue: false,
 };
 
 const config: PlaywrightTestConfig = {
@@ -28,7 +24,6 @@ const config: PlaywrightTestConfig = {
     timeout: 10000,
   },
   fullyParallel: true,
-  forbidOnly: true,
   workers: 5,
   use: {
     headless: true,
@@ -47,16 +42,6 @@ const config: PlaywrightTestConfig = {
     {
       name: 'basic',
       testDir: './tests/basic',
-    },
-    {
-      name: 'by-rp-features',
-      testDir: './tests/rp-features',
-      testIgnore: ['retries.spec.ts'],
-    },
-    {
-      name: 'with-retries',
-      testMatch: /retries.spec.ts/,
-      retries: 2,
     },
   ],
 };

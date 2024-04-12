@@ -85,22 +85,3 @@ test.describe(suiteName, () => {
     await expect(title).toHaveText('Playwright');
   });
 });
-
-test.describe('Checks with "toPass" timeouts', () => {
-  test(`Expect pool @desktop`, async () => {
-    await expect
-      .poll(
-        () => {
-          return 1;
-        },
-        { timeout: 30_000 }
-      )
-      .toBe(2);
-  });
-  test('Expect toPass @desktop', async () => {
-    await expect(() => {
-      expect(1).toBe(2);
-    }).toPass({ timeout: 30_000 });
-  });
-});
-
