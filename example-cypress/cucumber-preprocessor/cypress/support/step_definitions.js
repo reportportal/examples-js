@@ -1,26 +1,9 @@
-import { BeforeStep, Before } from '@badeball/cypress-cucumber-preprocessor';
+import { BeforeStep, AfterStep } from '@badeball/cypress-cucumber-preprocessor';
 
-const pickleArray = [];
-
-/**
- Hook to collect steps info to array
- */
-BeforeStep(function (pickle) {
-  pickleArray.push(pickle);
+BeforeStep((step) => {
+  cy.cucumberStepStart(step);
 });
 
-/**
- Hook to flush steps array between tests
- */
-Before(function () {
-  pickleArray.length = 0;
-});
-
-/**
- * Hook for sending execution results to the Report Portal
- */
-afterEach(() => {
-  for (const pickle of pickleArray) {
-    cy.logStep(pickle);
-  }
+AfterStep((step) => {
+  cy.cucumberStepEnd(step);
 });
