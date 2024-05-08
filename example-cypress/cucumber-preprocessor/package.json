@@ -6,12 +6,13 @@
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^20.0.3",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
-    "@reportportal/agent-js-cypress": "^5.2.0",
+    "@reportportal/agent-js-cypress": "^5.3.0",
     "cypress": "^13.7.2"
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true,
     "stepDefinitions": [
+      "cypress/support/step_definitions.js",
       "cypress/e2e/**/step_definitions/*.js"
     ]
   }

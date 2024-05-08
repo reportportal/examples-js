@@ -9,6 +9,7 @@ When('I search the phone {word} in search input', () => {
 });
 
 Then('{word} {word} appears on the screen', (brand, model) => {
+  cy.info(`model=${model} brand=${brand}`);
   expect(typeof model).to.equal('string');
   expect(typeof brand).to.equal('string');
 });
