@@ -1,5 +1,5 @@
 # examples-js
-Examples for js integrations with ReportPortal.
+Examples for JS integrations with ReportPortal.
 ## Here are examples for the following agents:
 
 * example-playwright for [agent-js-playwright](https://github.com/reportportal/agent-js-playwright)
