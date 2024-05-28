@@ -14,16 +14,32 @@
  *  limitations under the License.
  */
 
+const fs = require('fs');
+const path = require('path');
+
 describe('tests with specific status', () => {
-    test('should be passed', () => {
+    test.concurrent('should be passed', () => {
         expect(true).toBe(true);
     });
 
-    test('should be failed', () => {
+    test.concurrent('should be failed', () => {
         expect(true).toEqual(false);
     });
 
     test.skip('should be skipped', () => {
         expect(true).toEqual(true);
     });
+
+  test.concurrent('should be passed with attachment', () => {
+    const fileName = 'test.png';
+    const fileContent = fs.readFileSync(path.resolve(__dirname, './attachments', fileName));
+
+    ReportingApi.attachment({
+      name: fileName,
+      type: 'image/png',
+      content: fileContent.toString('base64'),
+    }, 'Description');
+
+    expect(true).toBe(true);
+  });
 });

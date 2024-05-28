@@ -3,6 +3,16 @@ import fs from 'fs';
 import path from 'path';
 
 test('Attachment', () => {
+  ReportingApi.description('Test with attachments');
+  ReportingApi.attributes([
+    {
+      key: 'feature',
+      value: 'attachments'
+    },
+    {
+      value: 'demo',
+    },
+  ]);
   const fileName = 'test.png';
   const fileContent = fs.readFileSync(path.resolve(__dirname, './files', fileName));
 

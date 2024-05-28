@@ -10,5 +10,6 @@
       "value": "launchV"
     }
   ],
-  "description": "DESCRIPTION"
+  "description": "DESCRIPTION",
+  "scenarioBasedStatistics": true
 }
