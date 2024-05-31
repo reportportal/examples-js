@@ -20,6 +20,7 @@ const rpConfig = {
 
 export default defineConfig({
   test: {
+    setupFiles: ["@reportportal/agent-js-vitest/setup"],
     reporters: ['default', new RPReporter(rpConfig)],
     fileParallelism: true,
     testTimeout: 800,
