@@ -14,16 +14,24 @@
  *  limitations under the License.
  */
 
-describe('tests with specific status', () => {
-    test('should be passed', () => {
-        expect(true).toBe(true);
-    });
+function calculator(operator, inputs) {
 
-    test('should be failed', () => {
-        expect(true).toEqual(false);
-    });
+  if (inputs.length < 2) {
+    throw new Error(`inputs should have length >= 2`);
+  }
 
-    test.skip('should be skipped', () => {
-        expect(true).toEqual(true);
-    });
-});
+  switch (operator) {
+    case '+':
+      return inputs.reduce((prev, curr) => prev + curr);
+    case '-':
+      return inputs.reduce((prev, curr) => prev - curr);
+    case '*':
+      return inputs.reduce((prev, curr) => prev * curr);
+    case '/':
+      return inputs.reduce((prev, curr) => prev / curr);
+    default:
+      throw new Error(`Unknown operator ${operator}`);
+  }
+}
+
+module.exports = calculator;
