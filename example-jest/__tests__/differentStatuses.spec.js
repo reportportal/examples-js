@@ -14,10 +14,16 @@
  *  limitations under the License.
  */
 
-describe('test with retry', () => {
-    jest.retryTimes(3);
+describe('Tests with different statuses', () => {
+    test('should be passed', () => {
+        expect(true).toBe(true);
+    });
 
-    test('should have retries', () => {
+    test('should be failed', () => {
         expect(true).toEqual(false);
+    });
+
+    test.skip('should be skipped', () => {
+        expect(true).toEqual(true);
     });
 });
