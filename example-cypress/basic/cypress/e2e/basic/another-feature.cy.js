@@ -1,5 +1,5 @@
 /*
- *  Copyright 2020 EPAM Systems
+ *  Copyright 2024 EPAM Systems
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ context('Google page verification', () => {
     });
 
     it('Check that Google page contains `Google` word', () => {
-        cy.info('Сypress example page: https://www.google.com/');
+        cy.info('Visit Google example page: https://www.google.com/');
         cy.setTestDescription('This test case checks the *Google* word on the Google example page.');
         cy.addTestAttributes([
             {
@@ -38,7 +38,7 @@ context('Google page verification', () => {
     });
 
     it('Check that Google page contains `Google123` word', () => {
-        cy.info('Сypress example page: https://www.google.com/');
+        cy.info('Visit Google example page: https://www.google.com/');
         cy.info('Add attributes to the test using `addTestAttributes` command');
         cy.setTestDescription('This test case checks the `Google123` word on the Google example page, but it fails.');
         cy.wait(1000);

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2022 EPAM Systems
+ *  Copyright 2024 EPAM Systems
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -19,50 +19,75 @@ describe('Cypress example page verification', () => {
     return cy.visit('https://example.cypress.io');
   });
 
-  it('Check the URL on the Cypress website', () => {
-    cy.info('Add **ReportPortal** related *metadata* before starting main test actions.');
-    cy.addTestAttributes([
-      {
-        key: 'feature',
-        value: 'clickable-area',
-      },
-      {
-        value: 'demo',
-      },
-    ]);
-    cy.setTestDescription('This test simply checks that *URL* contains `/commands/actions` on the **Cypress** website');
+  describe('URL checks', () => {
+    it('Check the URL on the Cypress website', () => {
+      cy.info('Add **ReportPortal** related *metadata* before starting main test actions.');
+      cy.addTestAttributes([
+        {
+          key: 'feature',
+          value: 'clickable-area',
+        },
+        {
+          value: 'demo',
+        },
+      ]);
+      cy.setTestDescription('This test simply checks that *URL* contains `/commands/actions` on the **Cypress** website');
 
-    cy.fixture('test.png').then((file) => {
-      cy.info('info log with attachment', {
-        name: 'test.png',
-        type: 'image/png',
-        content: file,
+      cy.fixture('test.png').then((file) => {
+        cy.info('info log with attachment', {
+          name: 'test.png',
+          type: 'image/png',
+          content: file,
+        });
       });
-    });
 
-    cy.contains('type').click();
-    cy.url().should('include', '/commands/actions');
+      cy.contains('type').click();
+      cy.url().should('include', '/commands/actions');
+    });
   });
 
-  it('Visits the Cypress website and type fake email on actions page', () => {
-    cy.log('Add **ReportPortal** related *metadata* before starting main test actions.');
-    cy.addTestAttributes([
-      {
-        key: 'feature',
-        value: 'action-email',
-      },
-      {
-        value: 'demo',
-      },
-    ]);
-    cy.setTestDescription('This test simply checks some `elements` on the **Cypress** website');
+  describe('Actions page', () => {
+    it('Type fake email on actions page', () => {
+      cy.log('Add **ReportPortal** related *metadata* before starting main test actions.');
+      cy.addTestAttributes([
+        {
+          key: 'feature',
+          value: 'action-email',
+        },
+        {
+          value: 'demo',
+        },
+      ]);
+      cy.setTestDescription('This test simply checks some `elements` on the **Cypress** website');
 
-    cy.contains('type')
-      .click();
-    cy.get('.action-email')
-      .type('fake@email.com');
-    cy.screenshot('type-fake-email');
-    cy.get('.action-email')
-      .should('have.value', 'fake@email.com');
-  })
+      cy.contains('type')
+        .click();
+      cy.get('.action-email')
+        .type('fake@email.com');
+      cy.screenshot('type-fake-email');
+      cy.get('.action-email')
+        .should('have.value', 'fake@email.com');
+    });
+
+    it('Check description on actions page', () => {
+      cy.log('Add **ReportPortal** related *metadata* before starting main test actions.');
+      cy.addTestAttributes([
+        {
+          key: 'feature',
+          value: 'check-description',
+        },
+        {
+          value: 'demo',
+        },
+      ]);
+      cy.setTestDescription('This test simply checks actions page *description* on the **Cypress** website');
+
+      cy.contains('type')
+        .click();
+      cy.screenshot('check-description');
+      cy.wait(1000);
+
+      cy.contains('Examples of actions being performed on DOM elements in Cypress');
+    });
+  });
 })
