@@ -4,7 +4,7 @@
     "test": "node ./index.js"
   },
   "dependencies": {
-    "@reportportal/newman-reporter-agent-js-postman": "^5.0.0",
-    "newman": "^4.5.5"
+    "@reportportal/newman-reporter-agent-js-postman": "^5.1.1",
+    "newman": "^6.1.3"
   }
 }
