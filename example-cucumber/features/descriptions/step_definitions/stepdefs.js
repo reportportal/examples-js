@@ -1,5 +1,5 @@
 const assert = require('assert');
-const {After, Before, When, Then} = require('@cucumber/cucumber');
+const { After, Before, When, Then } = require('@cucumber/cucumber');
 
 Before(function () {
   this.addDescription('This is a **description** for `before step`');
@@ -16,6 +16,7 @@ When('I put {string}', function (givenValue) {
   }])
   this.value = givenValue;
   this.addDescription('This is a **description** for `when step`');
+  this.addScenarioDescription('Additional description for **scenario**');
 });
 
 Then('I should compare it with {string}', function (expectedValue) {

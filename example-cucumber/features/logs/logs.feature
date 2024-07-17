@@ -5,6 +5,7 @@ Feature: logs
   Scenario Outline: Given and expected value are equal
   This test contain `steps` with **logs**
 
+    Given I am preparing scenario
     When I put "<value>"
     Then I should compare it with "<answer>"
 

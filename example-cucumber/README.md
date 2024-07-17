@@ -1,18 +1,15 @@
 ## Example for [@reportportal/agent-js-cucumber](https://www.npmjs.com/package/@reportportal/agent-js-cucumber)
 
 ## Preparation:
-Inside of `config/rpConfig.json` you need to insert data about your instance of the Report Portal.
+Inside of `report-portal-formatter.js` fill in the `rpConfig` with the data from your ReportPortal instance.
 
 Do not forget to install all the necessary dependencies:
 ```cmd
 npm install
 ```
-
-`npm install @cucumber/cucumber --no-save` - to install cucumber as a peer dependency. You can specify needed version by replacing `@cucumber/cucumber` with `@cucumber/cucumber@<version>`, for example, `@cucumber/cucumber@7`.
-
 ## Run the example
 
-Then run npm tasks with `example:` prefix. For example, `example:simple`.
+Then run npm tasks with `example:` prefix. For example, `example:simpleTest`.
 
 ---
 > Pay attention: you may change reporting behavior to report steps to the log level.\

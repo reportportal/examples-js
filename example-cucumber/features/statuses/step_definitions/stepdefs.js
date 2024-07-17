@@ -19,6 +19,9 @@ Then('I should compare it with {string}', function (expectedValue) {
   this.setStatusInterrupted();
   this.addDescription('This step had a **PASSED** status, but was overwritten with an **INTERRUPTED** status');
 
+  this.setScenarioStatusPassed();
+  this.addScenarioDescription('This scenario had a **FAILED** status, but was overwritten with an **PASSED** status');
+
   assert.strictEqual(this.value, expectedValue);
 });
 

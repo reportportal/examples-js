@@ -46,6 +46,10 @@ Then(/^I should see '(.*)'/, function(text, callback) {
   global.browser
     .wait(condition, 5000)
     .then(() => {
+      return this.scenarioScreenshot('This is screenshot for scenario');
+    })
+    .then(() => {
+      this.addScenarioDescription('Screenshot for scenario taken!');
       callback();
     })
     .catch((err) => callback(err));

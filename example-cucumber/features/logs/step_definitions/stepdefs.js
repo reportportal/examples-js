@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { After, Before, When, Then } = require('@cucumber/cucumber');
+const { After, Before, Given, When, Then } = require('@cucumber/cucumber');
 
 Before(function() {
   this.fatal('Before fatal log');
@@ -16,7 +16,7 @@ Before(function() {
   this.launchDebug('This is a debug launch log');
   this.launchTrace('This is a trace launch log');
 
-  this.addDescription('This step contain **logs**');
+  this.addDescription('This step contains **logs**');
 });
 
 After(function() {
@@ -27,7 +27,18 @@ After(function() {
   this.debug('After debug log');
   this.trace('After trace log');
 
-  this.addDescription('This step contain **logs**');
+  this.addDescription('This step contains **logs**');
+});
+
+Given('I am preparing scenario', function() {
+  this.scenarioInfo('This is Info Level log');
+  this.scenarioDebug('This is Debug Level log');
+  this.scenarioError('This is Error Level log');
+  this.scenarioWarn('This is Warn Level log');
+  this.scenarioTrace('This is Trace Level log');
+  this.scenarioFatal('This is Fatal Level log');
+
+  this.addScenarioDescription('This scenario contains **logs**');
 });
 
 When('I put {string}', function(givenValue) {
@@ -38,7 +49,7 @@ When('I put {string}', function(givenValue) {
   this.debug('Step debug log');
   this.trace('Step trace log');
 
-  this.addDescription('This step contain **logs**');
+  this.addDescription('This step contains **logs**');
 
   this.value = givenValue;
 });
@@ -51,7 +62,7 @@ Then('I should compare it with {string}', function (expectedValue) {
   this.debug('Step debug log');
   this.trace('Step trace log');
 
-  this.addDescription('This step contain **logs**');
+  this.addDescription('This step contains **logs**');
 
   assert.strictEqual(this.value, expectedValue);
 });

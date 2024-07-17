@@ -1,4 +1,18 @@
 const { createRPFormatterClass } = require('@reportportal/agent-js-cucumber');
-const rpConfig = require('./config/rpConfig');
+
+const rpConfig = {
+  endpoint: 'http://your-instance.com:8080/api/v1',
+  apiKey: '<API_KEY>',
+  launch: 'Your launch name',
+  project: 'Your reportportal project name',
+  attributes: [
+    {
+      key: 'launchK',
+      value: 'launchV'
+    }
+  ],
+  description: 'Your launch name description',
+  mode: 'DEFAULT'
+};
 
 module.exports = createRPFormatterClass(rpConfig);
