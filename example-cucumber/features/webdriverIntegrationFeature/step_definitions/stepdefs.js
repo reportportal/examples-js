@@ -2,6 +2,8 @@ const { Given, When, Then } = require('@cucumber/cucumber');
 const { until } = require('selenium-webdriver');
 
 Given(/^I am on the Cucumber.js GitHub repository/, function(callback) {
+  this.addScenarioDescription('This test should load GitHub cucumber-js page and take the screenshot!');
+  this.addScenarioAttributes([{ key: 'feature', value: 'demo' }]);
   this.addDescription('This test should load GitHub cucumber-js page and take the screenshot!');
   this.info('Going to the GitHub');
   global.browser
@@ -43,14 +45,10 @@ Then(/^I should see '(.*)'/, function(text, callback) {
   const xpath = `//*[contains(text(),'${text}')]`;
   const condition = until.elementLocated({ xpath });
   this.info('Waiting for the elements');
-  global.browser
-    .wait(condition, 5000)
-    .then(() => {
-      return this.scenarioScreenshot('This is screenshot for scenario');
-    })
-    .then(() => {
-      this.addScenarioDescription('Screenshot for scenario taken!');
-      callback();
-    })
-    .catch((err) => callback(err));
+  this.scenarioScreenshot('This is screenshot for scenario').then(() => {
+    this.addScenarioDescription('Screenshot for scenario taken!');
+    return global.browser.wait(condition, 5000);
+  }).then(() => {
+    callback();
+  }).catch((err) => callback(err));
 });
