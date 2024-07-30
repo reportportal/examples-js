@@ -1,4 +1,5 @@
 Feature: Webdriver integration
+  Description of the feature
 
   Scenario: Open cucumber-js GitHub page
     Given I am on the Cucumber.js GitHub repository

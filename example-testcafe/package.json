@@ -1,10 +1,10 @@
 {
   "scripts": {
-    "test:viaAPI": "node testcafe.js",
-    "test:viaCLI": "testcafe"
+    "test:viaAPI": "node testcafeManualSetup.js",
+    "test:viaCLI": "testcafe --config-file .testcaferc.js"
   },
   "devDependencies": {
-    "testcafe": "2.4.0",
-    "testcafe-reporter-agent-js-testcafe": "npm:@reportportal/testcafe-reporter-agent-js-testcafe@^5.0.0"
+    "testcafe": "3.6.2",
+    "testcafe-reporter-agent-js-testcafe": "npm:@reportportal/testcafe-reporter-agent-js-testcafe@^5.1.0"
   }
 }

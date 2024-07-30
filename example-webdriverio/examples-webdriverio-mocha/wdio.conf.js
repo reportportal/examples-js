@@ -2,14 +2,11 @@ const fs = require('fs');
 const { Reporter } = require('@reportportal/agent-js-webdriverio');
 
 const rpConfig = {
-  token: '00000000-0000-0000-0000-000000000000',
-  endpoint: 'https://reportportal.server/api/v1',
-  project: 'ProjectName',
-  launch: 'YourLauncherName',
-  description: 'Launch description',
-  mode: 'DEFAULT',
-  debug: false,
-  description: 'Static launch description',
+  token: '<API_KEY>',
+  endpoint: 'https://your.reportportal.server/api/v1',
+  project: 'YourReportPortalProjectName',
+  launch: 'YourLaunchName',
+  description: 'Your launch description',
   attributes: [{ key: 'key', value: 'value' }, { value: 'value' }],
   attachPicturesToLogs: true,
   reportSeleniumCommands: true,
@@ -104,7 +101,7 @@ exports.config = {
   //
   // If you only want to run your tests until a specific amount of tests have failed use
   // bail (default is 0 - don't bail, run all tests).
-  bail: 2,
+  bail: 0,
   //
   // Set a base URL in order to shorten url command calls. If your `url` parameter starts
   // with `/`, the base url gets prepended, not including the path portion of your baseUrl.

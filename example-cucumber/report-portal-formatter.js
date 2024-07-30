@@ -12,7 +12,6 @@ const rpConfig = {
     }
   ],
   description: 'Your launch name description',
-  mode: 'DEFAULT'
 };
 
 module.exports = createRPFormatterClass(rpConfig);

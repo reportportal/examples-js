@@ -1,5 +1,5 @@
 /*
- *  Copyright 2020 EPAM Systems
+ *  Copyright 2024 EPAM Systems
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -17,13 +17,14 @@
 // create mocha instance
 const Mocha = require('mocha');
 
+// TODO: Add example with mocharc file usage
 const mochaMain = new Mocha({
   reporter: '@reportportal/agent-js-mocha',
   reporterOptions: {
     endpoint: 'http://your-instance.com:8080/api/v1',
-    apiKey: 'reportportalApiKey',
-    launch: 'LAUNCH_NAME',
-    project: 'PROJECT_NAME',
+    apiKey: '<API_KEY>',
+    launch: 'Your launch name',
+    project: 'Your ReportPortal project name',
     description: 'PROJECT_DESCRIPTION',
     attributes: [
       {
@@ -47,7 +48,7 @@ try {
     'spec/statusesTest.spec.js',
     'spec/testCaseIdTest.spec.js',
   ];
-  mochaMain.run((failures) => process.on('exit', () => process.exit(failures))); // exit with non-zero exit code, other wise fails will not fail mocha run
+  mochaMain.run((failures) => process.on('exit', () => process.exit(failures))); // exit with non-zero exit code, otherwise fails will not fail mocha run
 } catch (err) {
   console.error(`Test suite doesn't exists or set. Error: ${err}`);
 }

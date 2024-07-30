@@ -6,7 +6,7 @@ module.exports = {
         [
             '@reportportal/agent-js-jest',
             {
-                apiKey: 'reportportalApiKey',
+                apiKey: '<API_KEY>',
                 endpoint: 'https://your.reportportal.server/api/v1',
                 launch: 'LAUNCH_NAME',
                 project: 'PROJECT_NAME',
