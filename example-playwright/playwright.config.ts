@@ -11,7 +11,8 @@ const rpConfig = {
       value: 'playwright',
     },
     {
-      value: 'example',
+      key: 'platform',
+      value: process.env.PLATFORM,
     },
   ],
   description: 'This is an example launch with playwright tests',

@@ -3,10 +3,18 @@
     "test": "npx playwright test --config=playwright.config.ts",
     "test:basic": "npx playwright test --config=playwright.config.ts --project=basic",
     "test:by-rp-features": "npx playwright test --config=playwright.config.ts --project=by-rp-features",
-    "test:with-retries": "npx playwright test --config=playwright.config.ts --project=with-retries"
+    "test:with-retries": "npx playwright test --config=playwright.config.ts --project=with-retries",
+
+    "test.sauce": "cross-env SAUCE_USERNAME=\"put_here\" SAUCE_ACCESS_KEY=\"put_here\" saucectl run --region eu-central-1 --build playwright-build-123",
+    "test.sauce.us": "saucectl run",
+    "test.sauce.eu": "saucectl run --region eu-central-1"
   },
   "devDependencies": {
-    "@reportportal/agent-js-playwright": "^5.1.6",
-    "@playwright/test": "^1.40.1"
+    "@playwright/test": "^1.47.2",
+    "@reportportal/agent-js-playwright": "^5.1.11",
+    "@types/node": "^22.7.4",
+    "cross-env": "^7.0.3",
+    "https-proxy-agent": "^7.0.5",
+    "saucectl": "^0.186.1"
   }
 }
