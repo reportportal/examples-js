@@ -43,7 +43,7 @@ npm test
 
 ## Run in SauceLabs
 
-If you are using SauceLabs to run Playwright tests, don't forget to include the agent package in `npm` dependencies in your `.sauce/config.yml`:
+1. If you are using SauceLabs to run Playwright tests, don't forget to include the agent package in `npm` dependencies in the `.sauce/config.yml`:
 
 ```yaml
 # ...
@@ -53,9 +53,7 @@ npm:
 # ...
 ```
 
-### ReportPortal & SauceLabs integration
-
-Make sure the integration configured on [ReportPortal side](https://reportportal.io/docs/plugins/SauceLabs/).
+2. Make sure the integration configured on [ReportPortal side](https://reportportal.io/docs/plugins/SauceLabs/).
 
 To make the SauceLabs page visible on ReportPortal UI, just provide the corresponding attributes to any of tests cases where you wish to observe it:
 
@@ -72,3 +70,11 @@ test('Just test', async ({ page, browserName }) => {
   // ...
 });
 ```
+
+3. Run the tests
+
+```bash
+cross-env SAUCE_USERNAME=\"user_name\" SAUCE_ACCESS_KEY=\"access_key\" saucectl run --build playwright-build-123
+```
+
+`SAUCE_USERNAME` and `SAUCE_ACCESS_KEY` can be also set to environment variables prior execution.
