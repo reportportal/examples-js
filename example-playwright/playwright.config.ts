@@ -11,7 +11,7 @@ const rpConfig = {
       value: 'playwright',
     },
     {
-      value: 'demo',
+      value: 'example',
     },
   ],
   description: 'This is an example launch with playwright tests',
