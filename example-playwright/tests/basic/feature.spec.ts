@@ -29,7 +29,7 @@ test('The Playwright`s website main page should contain "ReportPortal" word', as
 test('Just test', async ({ page, browserName }) => {
   ReportingApi.addAttributes([{
     key: 'SLID',
-    value: process.env.SAUCE_JOB_ID,
+    value: String(process.env.SAUCE_JOB_ID),
   }, {
     key: 'SLDC',
     value: String(process.env.SAUCE_REGION || '').toLowerCase().includes('us') ? 'US' : 'EU',
