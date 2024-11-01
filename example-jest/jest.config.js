@@ -11,15 +11,19 @@ module.exports = {
                 launch: 'LAUNCH_NAME',
                 project: 'PROJECT_NAME',
                 description: 'YOUR_DESCRIPTION',
+                debug: true,
                 attributes: [
                     {
-                        'key': 'YourKey',
-                        'value': 'YourValue'
+                        'key': 'test-framework',
+                        'value': 'jest'
                     },
                     {
                         'value': 'YourValue'
                     },
-                ]
+                ],
+                restClientConfig:{
+                  timeout: 0,
+                }
             }
         ]
     ],
