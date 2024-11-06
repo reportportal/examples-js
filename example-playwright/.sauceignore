@@ -11,4 +11,4 @@
 .npmrc
 *.gif
 # Remove this to have node_modules uploaded with code
-node_modules/
+# node_modules/

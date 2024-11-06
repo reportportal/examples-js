@@ -2,22 +2,43 @@ apiVersion: v1alpha
 kind: playwright
 sauce:
   region: eu-central-1
-  concurrency: 10
+  concurrency: 30
+  retries: 1
   metadata:
     tags:
-      - e2e
+      - shard
+docker:
+  fileTransfer: copy
 playwright:
   version: package.json # See https://docs.saucelabs.com/web-apps/automated-testing/playwright/#supported-testing-platforms for a list of supported versions.
   configFile: playwright.config.ts # See https://docs.saucelabs.com/web-apps/automated-testing/playwright/yaml/#configfile for a list of supported configuration files.
 rootDir: ./
+reporters:
+  json:
+    enabled: true
+    filename: saucectl-report.json
+  junit:
+    enabled: true
+    filename: saucectl-junit-report.xml
 npm:
-  packages:
-    "@reportportal/agent-js-playwright": "^5.1.11"
+  dependencies:
+    - "@reportportal/agent-js-playwright"
 suites:
   - name: "Chromium Win"
     platformName: "Windows 11"
     screenResolution: "1440x900"
-    testMatch: ["tests/basic/.*\\.spec\\.ts"]
+    testMatch: ["tests/rp-features"]
+    smartRetry:
+      failedOnly: true
+    shard: spec
     params:
       browserName: "chromium"
-      project: "basic" # Runs the project that's defined in `playwright.config.js`
+      slowMo: 1000
+#      project: "basic" # Runs the project that's defined in `playwright.config.js`
+artifacts:
+  cleanup: true
+  download:
+    when: always
+    match:
+      - '*.*'
+    directory: ./artifacts/
