@@ -1,0 +1,119 @@
+# Copyright 2025 EPAM Systems
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: CI-pipeline
+
+on:
+  workflow_dispatch:
+
+jobs:
+  start-rp-launch:
+    runs-on: ubuntu-latest
+    outputs:
+      rp_launch_id: ${{ steps.rp_launch.outputs.rp_launch_id }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Open Playwright example dir
+        run: cd example-playwright
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Start launch and set it to output
+        id: rp_launch
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const startLaunch = require('./scripts/startLaunch.js');
+            const launchId = await startLaunch();
+
+            core.setOutput('rp_launch_id', launchId);
+        env:
+          RP_TOKEN: ${{ secrets.RP_TOKEN }}
+          RP_ENDPOINT: ${{ secrets.RP_ENDPOINT }}
+          RP_PROJECT: ${{ secrets.RP_PROJECT }}
+
+
+  playwright-tests-with-shards:
+    needs: [start-rp-launch]
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [1, 2, 3, 4]
+        shardTotal: [4]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Open Playwright example dir
+        run: cd example-playwright
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright tests
+        run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        env:
+          RP_LAUNCH_ID: ${{ needs.start-rp-launch.outputs.rp_launch_id }}
+          RP_TOKEN: ${{ secrets.RP_TOKEN }}
+          RP_ENDPOINT: ${{ secrets.RP_ENDPOINT }}
+          RP_PROJECT: ${{ secrets.RP_PROJECT }}
+
+  finish-rp-launch:
+    runs-on: ubuntu-latest
+    # Finish RP launch after playwright-tests, even if some shards have failed
+    if: ${{ !cancelled() }}
+    needs: [start-rp-launch, playwright-tests-with-shards]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Open Playwright example dir
+        run: cd example-playwright
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Finish RP launch
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const finishLaunch = require('./scripts/finishLaunch.js');
+            await finishLaunch();
+        env:
+          RP_LAUNCH_ID: ${{ needs.start-rp-launch.outputs.rp_launch_id }}
+          RP_TOKEN: ${{ secrets.RP_TOKEN }}
+          RP_ENDPOINT: ${{ secrets.RP_ENDPOINT }}
+          RP_PROJECT: ${{ secrets.RP_PROJECT }}

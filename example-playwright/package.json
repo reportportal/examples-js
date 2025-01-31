@@ -11,6 +11,7 @@
     "@reportportal/agent-js-playwright": "^5.1.11",
     "@types/node": "^22.7.4",
     "cross-env": "^7.0.3",
-    "saucectl": "^0.186.1"
+    "saucectl": "^0.186.1",
+    "@reportportal/client-javascript": "^5.3.1"
   }
 }
