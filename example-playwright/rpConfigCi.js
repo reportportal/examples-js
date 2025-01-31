@@ -1,6 +1,6 @@
 const config = {
   endpoint: process.env.RP_ENDPOINT,
-  token: process.env.RP_TOKEN,
+  apiKey: process.env.RP_API_KEY,
   launch: process.env.RP_LAUNCH || 'Custom regression',
   project: process.env.RP_PROJECT,
   attributes: [

@@ -49,7 +49,7 @@ jobs:
 
             core.setOutput('rp_launch_id', launchId);
         env:
-          RP_TOKEN: ${{ secrets.RP_TOKEN }}
+          RP_API_KEY: ${{ secrets.RP_API_KEY }}
           RP_ENDPOINT: ${{ secrets.RP_ENDPOINT }}
           RP_PROJECT: ${{ secrets.RP_PROJECT }}
 
@@ -58,6 +58,9 @@ jobs:
     needs: [start-rp-launch]
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ env.WORKING_DIR }}
     strategy:
       fail-fast: false
       matrix:
@@ -82,12 +85,15 @@ jobs:
         run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
         env:
           RP_LAUNCH_ID: ${{ needs.start-rp-launch.outputs.rp_launch_id }}
-          RP_TOKEN: ${{ secrets.RP_TOKEN }}
+          RP_API_KEY: ${{ secrets.RP_API_KEY }}
           RP_ENDPOINT: ${{ secrets.RP_ENDPOINT }}
           RP_PROJECT: ${{ secrets.RP_PROJECT }}
 
   finish-rp-launch:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ env.WORKING_DIR }}
     # Finish RP launch after playwright-tests, even if some shards have failed
     if: ${{ !cancelled() }}
     needs: [start-rp-launch, playwright-tests-with-shards]
@@ -111,6 +117,6 @@ jobs:
             await finishLaunch();
         env:
           RP_LAUNCH_ID: ${{ needs.start-rp-launch.outputs.rp_launch_id }}
-          RP_TOKEN: ${{ secrets.RP_TOKEN }}
+          RP_API_KEY: ${{ secrets.RP_API_KEY }}
           RP_ENDPOINT: ${{ secrets.RP_ENDPOINT }}
           RP_PROJECT: ${{ secrets.RP_PROJECT }}
