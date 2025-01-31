@@ -16,6 +16,9 @@ name: CI-pipeline
 on:
   workflow_dispatch:
 
+env:
+  WORKING_DIR : 'example-playwright'
+
 jobs:
   start-rp-launch:
     runs-on: ubuntu-latest
@@ -30,17 +33,12 @@ jobs:
         with:
           node-version: 20
 
-      - name: Open Playwright example dir
-        run: |
-          cd example-playwright
-          ls
-
       - name: Install dependencies
-        run: |
-          ls
-          npm install
+        working-directory: ${{ env.WORKING_DIR }}
+        run: npm install
 
       - name: Start launch and set it to output
+        working-directory: ${{ env.WORKING_DIR }}
         id: rp_launch
         uses: actions/github-script@v6
         with:
@@ -73,16 +71,16 @@ jobs:
         with:
           node-version: 20
 
-      - name: Open Playwright example dir
-        run: cd example-playwright
-
       - name: Install dependencies
+        working-directory: ${{ env.WORKING_DIR }}
         run: npm install
 
       - name: Install Playwright browsers
+        working-directory: ${{ env.WORKING_DIR }}
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
+        working-directory: ${{ env.WORKING_DIR }}
         run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
         env:
           RP_LAUNCH_ID: ${{ needs.start-rp-launch.outputs.rp_launch_id }}
@@ -104,13 +102,12 @@ jobs:
         with:
           node-version: 20
 
-      - name: Open Playwright example dir
-        run: cd example-playwright
-
       - name: Install dependencies
+        working-directory: ${{ env.WORKING_DIR }}
         run: npm install
 
       - name: Finish RP launch
+        working-directory: ${{ env.WORKING_DIR }}
         uses: actions/github-script@v6
         with:
           script: |
