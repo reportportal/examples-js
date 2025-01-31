@@ -1,26 +1,5 @@
 import { PlaywrightTestConfig } from '@playwright/test';
-
-const rpConfig = {
-  apiKey: '00000000-0000-0000-0000-000000000000',
-  endpoint: 'https://your.reportportal.server/api/v1',
-  project: 'Your project',
-  launch: 'Custom regression',
-  attributes: [
-    {
-      key: 'agent',
-      value: 'playwright',
-    },
-    {
-      value: 'example',
-    },
-  ],
-  description: 'This is an example launch with playwright tests',
-  restClientConfig: {
-    timeout: 0,
-  },
-  includeTestSteps: true,
-  skippedIssue: false,
-};
+import { config as rpConfig } from './rpConfigCi';
 
 const config: PlaywrightTestConfig = {
   timeout: 2 * 60 * 1000,
