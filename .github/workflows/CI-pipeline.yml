@@ -31,10 +31,14 @@ jobs:
           node-version: 20
 
       - name: Open Playwright example dir
-        run: cd example-playwright
+        run: |
+          cd example-playwright
+          ls
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          ls
+          npm install
 
       - name: Start launch and set it to output
         id: rp_launch
