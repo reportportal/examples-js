@@ -44,7 +44,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const startLaunch = require('./scripts/startLaunch.js');
+            const startLaunch = require('./${{ env.WORKING_DIR }}/scripts/startLaunch.js');
             const launchId = await startLaunch();
 
             core.setOutput('rp_launch_id', launchId);
@@ -107,7 +107,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const finishLaunch = require('./scripts/finishLaunch.js');
+            const finishLaunch = require('./${{ env.WORKING_DIR }}/scripts/finishLaunch.js');
             await finishLaunch();
         env:
           RP_LAUNCH_ID: ${{ needs.start-rp-launch.outputs.rp_launch_id }}
