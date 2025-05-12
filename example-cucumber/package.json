@@ -1,6 +1,7 @@
 {
   "scripts": {
     "example:simpleTest": "cucumber-js features/simpleFeature/ --require=features/simpleFeature/**/*.js",
+    "example:simpleTestWithTag": "cucumber-js features/simpleFeature/ --require=features/simpleFeature/**/*.js --tags \"@foolsday\"",
     "example:simpleTestWithRetries": "cucumber-js features/simpleFeature/ --require=features/simpleFeature/**/*.js --retry 2",
     "example:simpleTestParallel": "cucumber-js features/simpleFeature/ --require=features/simpleFeature/**/*.js --retry 2 --parallel 3",
     "example:seleniumWebdriverTest": "cucumber-js features/webdriverIntegrationFeature/ --require=features/webdriverIntegrationFeature/**/*.js",
@@ -14,7 +15,7 @@
   "dependencies": {
     "@reportportal/agent-js-cucumber": "^5.4.0",
     "chromedriver": "*",
-    "selenium-webdriver": "^3.6.0",
-    "@cucumber/cucumber": "^10.8.0"
+    "selenium-webdriver": "^4.31.0",
+    "@cucumber/cucumber": "^11.2.0"
   }
 }
