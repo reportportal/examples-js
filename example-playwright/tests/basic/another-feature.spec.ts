@@ -93,6 +93,9 @@ test.describe('Checks with "toPass" timeouts', () => {
     await expect
       .poll(
         () => {
+          if (process.env.RP_FIX_TESTS) {
+            return 2;
+          }
           return 1;
         },
         { timeout: 30_000 }
@@ -101,7 +104,8 @@ test.describe('Checks with "toPass" timeouts', () => {
   });
   test('Expect toPass @desktop', async () => {
     await expect(() => {
-      expect(1).toBe(2);
+      const expected = process.env.RP_FIX_TESTS ? 1 : 2;
+      expect(1).toBe(expected);
     }).toPass({ timeout: 30_000 });
   });
 });

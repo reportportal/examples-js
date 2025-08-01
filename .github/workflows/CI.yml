@@ -1,0 +1,54 @@
+# Copyright 2025 EPAM Systems
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: Demo
+
+on:
+  workflow_dispatch:
+    inputs:
+      FIX_TESTS:
+        description: 'Fix tests?'
+        type: boolean
+        default: false
+
+env:
+  WORKING_DIR : 'example-playwright'
+
+jobs:
+  playwright-tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ env.WORKING_DIR }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright tests
+        run: npm run test:basic
+        env:
+          RP_API_KEY: ${{ secrets.RP_API_KEY }}
+          RP_ENDPOINT: ${{ secrets.RP_ENDPOINT }}
+          RP_PROJECT: ${{ secrets.RP_PROJECT }}
+          RP_FIX_TESTS: ${{ github.event.inputs.FIX_TESTS }}
