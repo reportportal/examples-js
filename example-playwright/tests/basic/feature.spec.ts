@@ -1,9 +1,8 @@
 import { test, expect } from '@playwright/test';
 import { ReportingApi } from '@reportportal/agent-js-playwright';
 
-function getExpectedTitle() {
-  console.log('RP_FIX_TESTS: ', process.env.RP_FIX_TESTS);
-  return process.env.RP_FIX_TESTS ? 'ReportPortal' : 'Playwright';
+function getExpectedNumber() {
+  return [true, 'true'].includes(process.env.RP_FIX_TESTS ?? '') ? 2 : 1;
 }
 
 test('The Playwright`s website main page should contain "ReportPortal" word', async ({ page, browserName }) => {

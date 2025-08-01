@@ -3,11 +3,8 @@ import { ReportingApi } from '@reportportal/agent-js-playwright';
 
 const suiteName = 'More checks related to Playwright website. It should';
 
-console.log('RP_FIX_TESTS: ', process.env.RP_FIX_TESTS);
-
 function getExpectedNumber() {
-  console.log('RP_FIX_TESTS: ', process.env.RP_FIX_TESTS);
-  return process.env.RP_FIX_TESTS ? 2 : 1;
+  return [true, 'true'].includes(process.env.RP_FIX_TESTS ?? '') ? 2 : 1;
 }
 
 test.describe(suiteName, () => {
