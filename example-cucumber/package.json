@@ -12,9 +12,9 @@
     "example:statusesTest": "cucumber-js features/statuses --require=features/statuses/**/*.js"
   },
   "dependencies": {
-    "@reportportal/agent-js-cucumber": "^5.4.0",
+    "@reportportal/agent-js-cucumber": "5.6.0",
     "chromedriver": "*",
     "selenium-webdriver": "^3.6.0",
-    "@cucumber/cucumber": "^10.8.0"
+    "@cucumber/cucumber": "^12.2.0"
   }
 }
