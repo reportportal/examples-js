@@ -1,8 +1,8 @@
 const { Reporter } = require('@reportportal/agent-js-webdriverio');
 
 const rpConfig = {
-  token: '00000000-0000-0000-0000-00000000000',
-  endpoint: 'http://your.reportportal.server:8080/api/v1',
+  apiKey: '<API_KEY>',
+  endpoint: 'http://your.reportportal.server:8080/api/v2',
   project: 'YourReportPortalProjectName',
   launch: 'YourLauncherName',
   mode: 'DEFAULT',
