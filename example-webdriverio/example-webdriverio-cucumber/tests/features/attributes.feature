@@ -1,5 +1,5 @@
 @custom:attribute @value
-Feature: attributes
+Feature: Attributes
   example: How to provide **attributes**
 
   @scenario:equal @demo
