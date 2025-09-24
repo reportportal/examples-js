@@ -15,6 +15,7 @@ const config = {
   description: 'This is an example launch with playwright tests',
   launchId: process.env.RP_LAUNCH_ID,
   includeTestSteps: true,
+  launchUuidPrint: true,
   skippedIssue: false,
   restClientConfig: {
     timeout: 0,
