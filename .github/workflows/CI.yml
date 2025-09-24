@@ -11,7 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: Demo
+name: Demo with Quality Gates
 
 on:
   workflow_dispatch:
@@ -23,6 +23,8 @@ on:
 
 env:
   WORKING_DIR : 'example-playwright'
+  SCRIPT_TIMEOUT_SECONDS: 60
+  REQUEST_TIMEOUT_SECONDS: 60
 
 jobs:
   playwright-tests:
@@ -46,9 +48,32 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        run: npm run test:basic
+        run: |
+          npm run test:basic | tee ./console.log || true
+          sed -rn 's/ReportPortal Launch UUID: ([^\\r\\n]+)/LAUNCH_UUID=\1/ p' ./console.log  >> "$GITHUB_ENV"
         env:
           RP_API_KEY: ${{ secrets.RP_API_KEY }}
           RP_ENDPOINT: ${{ secrets.RP_ENDPOINT }}
           RP_PROJECT: ${{ secrets.RP_PROJECT }}
           RP_FIX_TESTS: ${{ github.event.inputs.FIX_TESTS }}
+      
+      - name: Check RP Quality Gates
+        run: |
+          echo "Quality gates for: "
+          echo "LAUNCH_UUID: $LAUNCH_UUID"
+          QUALITY_GATE_STATUS=""
+          START_TIME=$(date +%s)
+          while ( [ -z "$QUALITY_GATE_STATUS" ] || [ "$QUALITY_GATE_STATUS" == "UNDEFINED" ] ) && [ $(( $(date +%s) - START_TIME )) -lt ${{ env.SCRIPT_TIMEOUT_SECONDS }} ]; do
+            echo "Waiting for quality gate status..."
+            sleep 10
+            QUALITY_GATE_JSON=$(curl -s -H "Authorization: Bearer ${{ secrets.RP_API_KEY }}" --max-time "${{ env.REQUEST_TIMEOUT_SECONDS }}" "${{ secrets.RP_ENDPOINT }}/${{ secrets.RP_PROJECT }}/launch/${LAUNCH_UUID}")
+            QUALITY_GATE_STATUS=$(echo "$QUALITY_GATE_JSON" | jq -r '.metadata.qualityGate.status // empty')
+          done
+          if [ "$QUALITY_GATE_STATUS" != "PASSED" ]; then
+            echo "Quality gate status: $QUALITY_GATE_STATUS"
+            echo "Failing the pipeline."
+            exit 1
+          else
+            echo "Quality gate status: $QUALITY_GATE_STATUS"
+            echo "Pipeline passed."
+          fi
