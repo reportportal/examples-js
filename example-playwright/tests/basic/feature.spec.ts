@@ -1,20 +1,21 @@
 import { test, expect } from '@playwright/test';
 import { ReportingApi } from '@reportportal/agent-js-playwright';
 
-function getExpectedTitle() {
-  return [true, 'true'].includes(process.env.RP_FIX_TESTS ?? '') ? 'Playwright' : 'ReportPortal';
-}
-
 test('The Playwright`s website main page should contain "ReportPortal" word', async ({ page, browserName }) => {
   console.log('Add **ReportPortal** related *metadata* before starting main test actions.');
   ReportingApi.addAttributes([
     {
-      key: 'browser',
-      value: browserName,
+      key: 'feature',
+      value: 'Title',
     },
     {
-      value: 'demo',
+      key: 'priority',
+      value: 'high',
     },
+    {
+      key: 'browser',
+      value: browserName,
+    }
   ]);
   ReportingApi.setDescription(`
     This test simply checks that **Playwright** website contains **"ReportPortal"** word in the navigation bar.
@@ -27,53 +28,100 @@ test('The Playwright`s website main page should contain "ReportPortal" word', as
   await page.goto('https://playwright.dev/');
   const title = page.locator('.navbar__inner .navbar__title');
   await page.waitForTimeout(1000);
-  await expect(title).toHaveText(getExpectedTitle());
+  await expect(title).toHaveText('ReportPortal');
 });
 
 test('Just test', async ({ page, browserName }) => {
-  ReportingApi.addAttributes([{
-    key: 'SLID',
-    value: String(process.env.SAUCE_JOB_ID),
-  }, {
-    key: 'SLDC',
-    value: String(process.env.SAUCE_REGION || '').toLowerCase().includes('us') ? 'US' : 'EU',
-  }]);
+  ReportingApi.addAttributes([
+    {
+      key: 'feature',
+      value: 'Navbar',
+    },
+    {
+      key: 'priority',
+      value: 'medium',
+    },
+  ]);
 
   await page.goto('https://playwright.dev/');
 
   const title = page.locator('.navbar__inner .navbar__title');
   await page.waitForTimeout(Math.random() * 1000);
-  await expect(title).toHaveText(getExpectedTitle());
+  await expect(title).toHaveText('Playwright12');
 });
 
 test('Another test', async ({ page, browserName }) => {
+  ReportingApi.addAttributes([
+    {
+      key: 'feature',
+      value: 'Title',
+    },
+    {
+      key: 'priority',
+      value: 'medium',
+    },
+  ]);
   await page.goto('https://playwright.dev/');
   const title = page.locator('.navbar__inner .navbar__title');
   await page.waitForTimeout(3000);
-  await expect(title).toHaveText(getExpectedTitle());
+  await expect(title).toHaveText('Playwright');
+});
+
+test('Website title testing', async ({ page, browserName }) => {
+  ReportingApi.addAttributes([
+    {
+      key: 'feature',
+      value: 'Title',
+    },
+    {
+      key: 'priority',
+      value: 'medium',
+    },
+  ]);
+  await page.goto('https://playwright.dev/');
+  const title = page.locator('.navbar__inner .navbar123__title');
+  await page.waitForTimeout(3000);
+  await expect(title).toHaveText('Playwright');
 });
 
 test('Test to pass', async ({ page, browserName }) => {
+  ReportingApi.addAttributes([
+    {
+      key: 'feature',
+      value: 'Title',
+    },
+    {
+      key: 'priority',
+      value: 'low',
+    },
+  ]);
+  await page
   await page.goto('https://playwright.dev/');
   const title = page.locator('.navbar__inner .navbar__title');
   await expect(title).toHaveText('Playwright');
 });
 
-test.skip('Check that everything is ok', async ({ page, browserName }) => {
+test('Check that everything is ok', async ({ page, browserName }) => {
   console.log('Add **ReportPortal** related *metadata* before starting main test actions.');
   ReportingApi.addAttributes([
     {
-      key: 'browser',
-      value: browserName,
+      key: 'feature',
+      value: 'Navbar',
     },
     {
-      value: 'demo',
+      key: 'priority',
+      value: 'low',
+    },
+    {
+      key: 'browser',
+      value: browserName,
     },
   ]);
   ReportingApi.setDescription(`
     This test simply checks that **Playwright** website contains **"ReportPortal"** word in the navigation bar.
     But seems like this test will *fail*.
   `);
+  test.skip();
 
   console.warn('Warning! The **Playwright** website may not contain "ReportPortal" mentions in its `navigation`.');
 
@@ -83,5 +131,5 @@ test.skip('Check that everything is ok', async ({ page, browserName }) => {
   const title = page.locator('.navbar__inner .navbar__title');
 
   await page.waitForTimeout(1000);
-  await expect(title).toHaveText(getExpectedTitle());
+  await expect(title).toHaveText('ReportPortal');
 });

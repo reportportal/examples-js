@@ -3,10 +3,6 @@ import { ReportingApi } from '@reportportal/agent-js-playwright';
 
 const suiteName = 'More checks related to Playwright website. It should';
 
-function getExpectedNumber() {
-  return [true, 'true'].includes(process.env.RP_FIX_TESTS ?? '') ? 2 : 1;
-}
-
 test.describe(suiteName, () => {
   test.describe.configure({ mode: 'serial', retries: 2 }); // use 'serial' mode and retries for this suite
 
@@ -17,14 +13,15 @@ test.describe(suiteName, () => {
     },
     {
       key: 'feature',
-      value: 'title',
+      value: 'Title',
     },
     {
       key: 'feature',
-      value: 'get-started',
+      value: 'Intro',
     },
     {
-      value: 'demo',
+      key: 'feature',
+      value: 'Timeout',
     },
   ], suiteName);
   ReportingApi.setDescription(
@@ -35,13 +32,19 @@ test.describe(suiteName, () => {
   test('has the correct title', async ({ page, browserName }) => {
     ReportingApi.addAttributes([
       {
+        key: 'feature',
+        value: 'Title',
+      },
+      {
+        key: 'priority',
+        value: 'high',
+      },
+      {
         key: 'browser',
         value: browserName,
       },
-      {
-        value: 'demo',
-      },
     ]);
+
     ReportingApi.setDescription(`The test name is self-descriptive, but do not hesitate to provide additional *info* about the test,
       e.g. some important notes from the **Test Case Management system**, special conditions, etc.
     `);
@@ -58,11 +61,16 @@ test.describe(suiteName, () => {
   test('redirect to "intro" page after clicking on get started link', async ({ page, browserName }, testInfo) => {
     ReportingApi.addAttributes([
       {
-        key: 'browser',
-        value: browserName,
+        key: 'feature',
+        value: 'Intro',
       },
       {
-        value: 'demo',
+        key: 'priority',
+        value: 'high',
+      },
+      {
+        key: 'browser',
+        value: browserName,
       },
     ]);
     ReportingApi.setDescription(`The test name is self-descriptive, but do not hesitate to provide additional *info* about the test,
@@ -93,7 +101,29 @@ test.describe(suiteName, () => {
 });
 
 test.describe('Checks with "toPass" timeouts', () => {
+  ReportingApi.addAttributes([
+    {
+      key: 'feature',
+      value: 'Timeout',
+    },
+    {
+      key: 'priority',
+      value: 'low',
+    },
+  ], 'Checks with "toPass" timeouts');
+  ReportingApi.setDescription('This suite contains tests with "toPass" timeouts', 'Checks with "toPass" timeouts');
+
   test(`Expect pool @desktop`, async () => {
+    ReportingApi.addAttributes([
+      {
+        key: 'feature',
+        value: 'Timeout',
+      },
+      {
+        key: 'priority',
+        value: 'low',
+      },
+    ]);
     await expect
       .poll(
         () => {
@@ -101,12 +131,36 @@ test.describe('Checks with "toPass" timeouts', () => {
         },
         { timeout: 30_000 }
       )
-      .toBe(getExpectedNumber());
+      .toBe(1);
   });
   test('Expect toPass @desktop', async () => {
+    ReportingApi.addAttributes([
+      {
+        key: 'feature',
+        value: 'Timeout',
+      },
+      {
+        key: 'priority',
+        value: 'low',
+      },
+    ]);
     await expect(() => {
-      expect(2).toBe(getExpectedNumber());
+      expect(2).toBe(1);
     }).toPass({ timeout: 30_000 });
+  });
+  test('Should be skipped with a reason @desktop', async () => {
+    ReportingApi.addAttributes([
+      {
+        key: 'feature',
+        value: 'Timeout',
+      },
+      {
+        key: 'priority',
+        value: 'low',
+      },
+    ]);
+    test.skip(true, 'skipping test');
+    expect(2).toBe(1);
   });
 });
 

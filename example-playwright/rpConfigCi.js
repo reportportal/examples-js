@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const config = {
   endpoint: process.env.RP_ENDPOINT,
   apiKey: process.env.RP_API_KEY,
@@ -9,13 +11,17 @@ const config = {
       value: 'playwright',
     },
     {
-      value: 'example',
+      value: 'demo',
+    },
+    {
+      key: 'build',
+      value: process.env.BUILD_ID,
     },
   ],
   description: 'This is an example launch with playwright tests',
   launchId: process.env.RP_LAUNCH_ID,
   includeTestSteps: true,
-  launchUuidPrint: true,
+  launchUuidPrint: false,
   skippedIssue: false,
   restClientConfig: {
     timeout: 0,
