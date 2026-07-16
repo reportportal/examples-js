@@ -18,6 +18,7 @@ Feature: Is it Holiday yet?
       | Independence   | Yes    |
       | St.Patrick's   | Nope   |
 
+  @foolsday
   Scenario: April Fool's is not Holiday
     Description of scenario
 
