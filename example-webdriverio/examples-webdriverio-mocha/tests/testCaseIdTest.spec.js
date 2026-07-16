@@ -17,7 +17,7 @@
 const expect = require('chai').expect;
 const { ReportingApi } = require('@reportportal/agent-js-webdriverio');
 
-describe('testCaseId for suite/test', () => {
+describe('Set testCaseId for suite/test', () => {
   before(() => {
     ReportingApi.setTestCaseId('TestCaseIdForTheSuite');
   });

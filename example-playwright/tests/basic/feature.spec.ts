@@ -1,6 +1,10 @@
 import { test, expect } from '@playwright/test';
 import { ReportingApi } from '@reportportal/agent-js-playwright';
 
+function getExpectedTitle() {
+  return [true, 'true'].includes(process.env.RP_FIX_TESTS ?? '') ? 'Playwright' : 'ReportPortal';
+}
+
 test('The Playwright`s website main page should contain "ReportPortal" word', async ({ page, browserName }) => {
   console.log('Add **ReportPortal** related *metadata* before starting main test actions.');
   ReportingApi.addAttributes([
@@ -23,7 +27,7 @@ test('The Playwright`s website main page should contain "ReportPortal" word', as
   await page.goto('https://playwright.dev/');
   const title = page.locator('.navbar__inner .navbar__title');
   await page.waitForTimeout(1000);
-  await expect(title).toHaveText('ReportPortal');
+  await expect(title).toHaveText(getExpectedTitle());
 });
 
 test('Just test', async ({ page, browserName }) => {
@@ -39,14 +43,14 @@ test('Just test', async ({ page, browserName }) => {
 
   const title = page.locator('.navbar__inner .navbar__title');
   await page.waitForTimeout(Math.random() * 1000);
-  await expect(title).toHaveText('ReportPortal');
+  await expect(title).toHaveText(getExpectedTitle());
 });
 
 test('Another test', async ({ page, browserName }) => {
   await page.goto('https://playwright.dev/');
   const title = page.locator('.navbar__inner .navbar__title');
   await page.waitForTimeout(3000);
-  await expect(title).toHaveText('ReportPortal');
+  await expect(title).toHaveText(getExpectedTitle());
 });
 
 test('Test to pass', async ({ page, browserName }) => {
@@ -79,5 +83,5 @@ test.skip('Check that everything is ok', async ({ page, browserName }) => {
   const title = page.locator('.navbar__inner .navbar__title');
 
   await page.waitForTimeout(1000);
-  await expect(title).toHaveText('ReportPortal');
+  await expect(title).toHaveText(getExpectedTitle());
 });

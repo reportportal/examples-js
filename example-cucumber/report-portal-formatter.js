@@ -1,7 +1,7 @@
 const { createRPFormatterClass } = require('@reportportal/agent-js-cucumber');
 
 const rpConfig = {
-  endpoint: 'http://your-instance.com:8080/api/v1',
+  endpoint: 'http://your-instance.com:8080/api/v2',
   apiKey: '<API_KEY>',
   launch: 'Your launch name',
   project: 'Your reportportal project name',

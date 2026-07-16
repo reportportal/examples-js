@@ -17,7 +17,7 @@
 const expect = require('chai').expect;
 const { ReportingApi } = require('@reportportal/agent-js-webdriverio');
 
-describe('attributes for suite/test', () => {
+describe('Attributes for suite/test', () => {
   before(() => {
     ReportingApi.setDescription('This suite should have the correct suite attributes');
     ReportingApi.addAttributes([

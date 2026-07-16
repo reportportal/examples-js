@@ -16,7 +16,7 @@
 const expect = require('chai').expect;
 const { ReportingApi } = require('@reportportal/agent-js-webdriverio');
 
-describe('populated statuses for launch/suite/test', () => {
+describe('Populated statuses for launch/suite/test', () => {
   before(() => {
     ReportingApi.setLaunchStatusInfo();
     ReportingApi.setStatusInfo();

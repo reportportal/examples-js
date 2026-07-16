@@ -3,6 +3,10 @@ import { ReportingApi } from '@reportportal/agent-js-playwright';
 
 const suiteName = 'More checks related to Playwright website. It should';
 
+function getExpectedNumber() {
+  return [true, 'true'].includes(process.env.RP_FIX_TESTS ?? '') ? 2 : 1;
+}
+
 test.describe(suiteName, () => {
   test.describe.configure({ mode: 'serial', retries: 2 }); // use 'serial' mode and retries for this suite
 
@@ -93,15 +97,15 @@ test.describe('Checks with "toPass" timeouts', () => {
     await expect
       .poll(
         () => {
-          return 1;
+          return 2;
         },
         { timeout: 30_000 }
       )
-      .toBe(2);
+      .toBe(getExpectedNumber());
   });
   test('Expect toPass @desktop', async () => {
     await expect(() => {
-      expect(1).toBe(2);
+      expect(2).toBe(getExpectedNumber());
     }).toPass({ timeout: 30_000 });
   });
 });
