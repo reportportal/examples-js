@@ -19,12 +19,15 @@ require('dotenv').config();
 const Mocha = require('mocha');
 
 const mochaMain = new Mocha({
-  reporter: '@reportportal/agent-js-mocha',
+  reporter: 'mocha-multi-reporters',
   reporterOptions: {
-    endpoint: process.env.RP_ENDPOINT,
-    apiKey: process.env.RP_API_KEY,
-    launch: 'Mocha tests for Selenium with Mobitru',
-    project: process.env.RP_PROJECT,
+    reporterEnabled: 'spec, @reportportal/agent-js-mocha',
+    reportportalAgentJsMochaReporterOptions: {
+      endpoint: process.env.RP_ENDPOINT,
+      apiKey: process.env.RP_API_KEY,
+      launch: 'Mocha tests for Selenium with Mobitru',
+      project: process.env.RP_PROJECT,
+    },
   },
   timeout: 250000,
 });

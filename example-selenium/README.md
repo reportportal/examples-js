@@ -45,13 +45,17 @@ MOBITRU_ACCESS_TOKEN=your_access_token
 # MOBITRU_HUB_URL=browserhub-us.mobitru.com
 ```
 
-ReportPortal options are read from `.env` in `main.js`:
+Reporters are configured in `main.js` via [mocha-multi-reporters](https://www.npmjs.com/package/mocha-multi-reporters): console `spec` output plus `@reportportal/agent-js-mocha`. ReportPortal options are read from `.env`:
 
 ```javascript
+reporter: 'mocha-multi-reporters',
 reporterOptions: {
-  endpoint: process.env.RP_ENDPOINT,
-  apiKey: process.env.RP_API_KEY,
-  project: process.env.RP_PROJECT,
+  reporterEnabled: 'spec, @reportportal/agent-js-mocha',
+  reportportalAgentJsMochaReporterOptions: {
+    endpoint: process.env.RP_ENDPOINT,
+    apiKey: process.env.RP_API_KEY,
+    project: process.env.RP_PROJECT,
+  },
 }
 ```
 

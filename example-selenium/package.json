@@ -10,6 +10,7 @@
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.7",
     "mocha": "^10.7.0",
+    "mocha-multi-reporters": "^1.5.1",
     "selenium-webdriver": "^4.27.0"
   }
 }
