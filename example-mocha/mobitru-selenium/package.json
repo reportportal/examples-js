@@ -2,7 +2,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "test": "node main.js",
-    "test:mobitru": "cross-env BROWSER_PROVIDER=mobitru node main.js"
+    "test:mobitru": "node_modules/.bin/cross-env BROWSER_PROVIDER=mobitru node main.js"
   },
   "devDependencies": {
     "@reportportal/agent-js-mocha": "^5.1.0",
