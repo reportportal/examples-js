@@ -35,7 +35,11 @@ const config: PlaywrightTestConfig = {
     {
       name: 'with-retries',
       testMatch: /retries.spec.ts/,
-      retries: 2,
+      retries: 10,
+    },
+    {
+      name: 'mobitru',
+      testDir: './tests/mobitru',
     },
   ],
 };

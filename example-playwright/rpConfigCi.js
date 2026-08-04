@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 const config = {
   endpoint: process.env.RP_ENDPOINT,
   apiKey: process.env.RP_API_KEY,
