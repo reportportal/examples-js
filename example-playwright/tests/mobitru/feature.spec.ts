@@ -6,7 +6,7 @@ import type { Page } from 'playwright-core';
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 // Must match the installed @playwright/test version and a version supported by Mobitru
-const PW_VERSION = '1.61.1';
+const PW_VERSION = '1.62.1';
 
 test.describe.serial('Mobitru Playwright example', () => {
   const mobitru_test = test.extend<{ page: Page }>({
