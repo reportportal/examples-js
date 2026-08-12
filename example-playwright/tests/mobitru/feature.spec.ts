@@ -39,7 +39,7 @@ test.describe.serial('Mobitru Playwright example', () => {
       const wsEndpoint =
         `wss://${mobitruTeamCode}:${mobitruAccessToken}@${mobitruHost}` +
         `/playwright/chromium/playwright-${PW_VERSION}` +
-        `?headless=false&enableVideo=${videoEnabled}&sessionName=${sessionName}`;
+        `?headless=false&enableVideo=${videoEnabled}&arg=--use-gl&arg=--start-maximized&sessionName=${sessionName}`;
 
       // Mobitru may need a few seconds to free the previous session slot
       const browser = await pRetry(
