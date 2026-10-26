@@ -6,7 +6,7 @@ import type { Page } from 'playwright-core';
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 // Must match the installed @playwright/test version and a version supported by Mobitru
-const PW_VERSION = '1.62.1';
+const PW_VERSION = '1.60.0';
 
 test.describe.serial('Mobitru Playwright example', () => {
   const mobitru_test = test.extend<{ page: Page }>({
@@ -38,7 +38,7 @@ test.describe.serial('Mobitru Playwright example', () => {
       const videoEnabled = process.env.VIDEO_ENABLED || 'true';
       const wsEndpoint =
         `wss://${mobitruTeamCode}:${mobitruAccessToken}@${mobitruHost}` +
-        `/playwright/chromium/playwright-${PW_VERSION}` +
+        `/playwright/chrome/playwright-${PW_VERSION}` +
         `?headless=false&enableVideo=${videoEnabled}&arg=--use-gl&arg=--start-maximized&sessionName=${sessionName}`;
 
       // Mobitru may need a few seconds to free the previous session slot
